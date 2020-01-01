@@ -709,7 +709,9 @@ Layout/LineLength:
   IgnoredPatterns: [
     'http://',
     'https://',
-    'data = '
+    'data = ',
+    'if ',
+    'unless '
   ]
 
 Layout/MultilineArrayBraceLayout:
@@ -1712,7 +1714,7 @@ Metrics/BlockNesting:
 
 Metrics/ClassLength:
   Description: 'Avoid classes longer than 100 lines of code.'
-  Enabled: true
+  Enabled: false
   CountComments: false  # count full line comments?
   Max: 100
   Exclude:
@@ -1985,9 +1987,7 @@ Naming/PredicateName:
 Naming/RescuedExceptionsVariableName:
   Description: 'Use consistent rescued exceptions variables naming.'
   Enabled: true
-  VersionAdded: '0.67'
-  VersionChanged: '0.68'
-  PreferredName: e
+  PreferredName: err
 
 Naming/VariableName:
   Description: 'Use the configured style when naming variables.'
@@ -3142,9 +3142,7 @@ Style/NumericLiterals:
                  Add underscores to large numeric literals to improve their
                  readability.
   StyleGuide: '#underscores-in-numerics'
-  Enabled: true
-  VersionAdded: '0.9'
-  VersionChanged: '0.48'
+  Enabled: false
   MinDigits: 5
   Strict: false
 
@@ -3588,11 +3586,10 @@ Style/StructInheritance:
   VersionAdded: '0.29'
 
 Style/SymbolArray:
-  Description: 'Use %i or %I for arrays of symbols.'
-  StyleGuide: '#percent-i'
+  Description: 'Use brackets array for symbols.'
   Enabled: true
-  EnforcedStyle: percent
-  MinSize: 4
+  EnforcedStyle: brackets
+  MinSize: 1
   SupportedStyles:
     - percent
     - brackets
@@ -3786,10 +3783,9 @@ Style/WhileUntilModifier:
   VersionChanged: '0.30'
 
 Style/WordArray:
-  Description: 'Use %w or %W for arrays of words.'
-  StyleGuide: '#percent-w'
+  Description: 'Use brackets array for strings.'
   Enabled: true
-  EnforcedStyle: percent
+  EnforcedStyle: brackets
   SupportedStyles:
     # percent style: %w(word1 word2)
     - percent
@@ -3798,7 +3794,7 @@ Style/WordArray:
   # The `MinSize` option causes the `WordArray` rule to be ignored for arrays
   # smaller than a certain size. The rule is only applied to arrays
   # whose element count is greater than or equal to `MinSize`.
-  MinSize: 4
+  MinSize: 1
   # The regular expression `WordRegex` decides what is considered a word.
   WordRegex: !ruby/regexp '/\A(?:\p{Word}|\p{Word}-\p{Word}|\n|\t)+\z/'
 
