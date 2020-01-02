@@ -3157,9 +3157,7 @@ Style/NumericPredicate:
   SafeAutoCorrect: false
   AutoCorrect: false
   Enabled: true
-  VersionAdded: '0.42'
-  VersionChanged: '0.59'
-  EnforcedStyle: predicate
+  EnforcedStyle: comparison
   SupportedStyles:
     - predicate
     - comparison
