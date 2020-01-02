@@ -3639,7 +3639,7 @@ Style/TrailingBodyOnModule:
 
 Style/TrailingCommaInArguments:
   Description: 'Checks for trailing comma in argument lists.'
-  Enabled: true
+  Enabled: false
   # If `comma`, the cop requires a comma after the last argument, but only for
   # parenthesized method calls where each argument is on its own line.
   # If `consistent_comma`, the cop requires a comma after the last argument,
@@ -3652,7 +3652,7 @@ Style/TrailingCommaInArguments:
 
 Style/TrailingCommaInArrayLiteral:
   Description: 'Checks for trailing comma in array literals.'
-  Enabled: true
+  Enabled: false
   # but only when each item is on its own line.
   # If `consistent_comma`, the cop requires a comma after the last item of all
   # non-empty array literals.
@@ -3664,7 +3664,7 @@ Style/TrailingCommaInArrayLiteral:
 
 Style/TrailingCommaInHashLiteral:
   Description: 'Checks for trailing comma in hash literals.'
-  Enabled: true
+  Enabled: false
   # If `comma`, the cop requires a comma after the last item in a hash,
   # but only when each item is on its own line.
   # If `consistent_comma`, the cop requires a comma after the last item of all
