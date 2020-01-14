@@ -1650,7 +1650,7 @@ Lint/ReturnInVoidContext:
 
 Lint/SafeNavigationChain:
   Description: 'Do not chain ordinary method call after safe navigation operator.'
-  Enabled: true
+  Enabled: false
   Severity: error
   VersionAdded: '0.47'
   VersionChanged: '0.77'
@@ -1850,7 +1850,7 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Description: 'Avoid long blocks with many lines.'
-  Enabled: true
+  Enabled: false
   Severity: error
   CountComments: false  # count full line comments?
   Max: 80
@@ -1895,7 +1895,7 @@ Metrics/CyclomaticComplexity:
 Metrics/MethodLength:
   Description: 'Avoid methods longer than 80 lines of code.'
   StyleGuide: '#short-methods'
-  Enabled: true
+  Enabled: false
   Severity: error
   CountComments: false  # count full line comments?
   Max: 80
@@ -1915,7 +1915,7 @@ Metrics/ParameterLists:
   StyleGuide: '#too-many-params'
   Enabled: true
   Severity: error
-  Max: 3
+  Max: 5
   CountKeywordArgs: false
   Exclude:
     # Workers `perform` method cant transform to keyword
@@ -1942,7 +1942,7 @@ Migration/DepartmentName:
 Naming/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
   StyleGuide: '#accessor_mutator_method_names'
-  Enabled: true
+  Enabled: false
   Severity: error
   VersionAdded: '0.50'
 
@@ -2078,7 +2078,7 @@ Naming/HeredocDelimiterNaming:
 Naming/MemoizedInstanceVariableName:
   Description: >-
     Memoized method name should match memo instance variable name.
-  Enabled: true
+  Enabled: false
   Severity: error
   VersionAdded: '0.53'
   VersionChanged: '0.58'
@@ -2110,7 +2110,7 @@ Naming/MethodParameterName:
   Description: >-
                  Checks for method parameter names that contain capital letters,
                  end in numbers, or do not meet a minimal length.
-  Enabled: true
+  Enabled: false
   Severity: error
   VersionAdded: '0.53'
   VersionChanged: '0.77'
@@ -2512,7 +2512,7 @@ Style/ClassMethods:
 Style/ClassVars:
   Description: 'Avoid the use of class variables.'
   StyleGuide: '#no-class-vars'
-  Enabled: true
+  Enabled: false
   Severity: error
   VersionAdded: '0.13'
 
@@ -2802,7 +2802,7 @@ Style/FloatDivision:
   Description: 'For performing float division, coerce one side only.'
   StyleGuide: '#float-division'
   Reference: 'https://github.com/rubocop-hq/ruby-style-guide/issues/628'
-  Enabled: true
+  Enabled: false
   Severity: error
   VersionAdded: '0.72'
   EnforcedStyle: single_coerce
@@ -2937,7 +2937,7 @@ Style/IfUnlessModifier:
                  Favor modifier if/unless usage when you have a
                  single-line body.
   StyleGuide: '#if-as-a-modifier'
-  Enabled: true
+  Enabled: false
   Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.30'
@@ -3178,7 +3178,7 @@ Style/ModuleFunction:
 Style/MultilineBlockChain:
   Description: 'Avoid multi-line chains of blocks.'
   StyleGuide: '#single-line-blocks'
-  Enabled: true
+  Enabled: false
   Severity: error
   VersionAdded: '0.13'
 
@@ -3420,7 +3420,7 @@ Style/NumericPredicate:
   # of the variables which rubocop doesn't have.
   SafeAutoCorrect: false
   AutoCorrect: false
-  Enabled: true
+  Enabled: false
   Severity: error
   EnforcedStyle: comparison
   SupportedStyles:
