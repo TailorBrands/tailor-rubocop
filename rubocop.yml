@@ -3267,7 +3267,7 @@ Style/NegatedIf:
   Severity: error
   VersionAdded: '0.20'
   VersionChanged: '0.48'
-  EnforcedStyle: both
+  EnforcedStyle: postfix
   SupportedStyles:
     # both: prefix and postfix negated `if` should both use `unless`
     # prefix: only use `unless` for negated `if` statements positioned before the body of the statement
