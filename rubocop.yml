@@ -1197,7 +1197,7 @@ Layout/SpaceInsideStringInterpolation:
     - space
     - no_space
 
-Layout/Tab:
+Layout/IndentationStyle:
   Description: 'No hard tabs.'
   StyleGuide: '#spaces-indentation'
   Enabled: true
@@ -1363,12 +1363,6 @@ Lint/EmptyWhen:
   Enabled: true
   Severity: error
   VersionAdded: '0.45'
-
-Lint/EndInMethod:
-  Description: 'END blocks should not be placed inside method definitions.'
-  Enabled: true
-  Severity: error
-  VersionAdded: '0.9'
 
 Lint/EnsureReturn:
   Description: 'Do not use return in an ensure block.'
@@ -1815,7 +1809,7 @@ Lint/UselessAssignment:
   Severity: error
   VersionAdded: '0.11'
 
-Lint/UselessComparison:
+Lint/BinaryOperatorWithIdenticalOperands:
   Description: 'Checks for comparison of something with itself.'
   Enabled: true
   Severity: error
@@ -3083,7 +3077,7 @@ Style/MethodDefParentheses:
     - require_no_parentheses
     - require_no_parentheses_except_multiline
 
-Style/MethodMissingSuper:
+Lint/MissingSuper:
   Description: Checks for `method_missing` to call `super`.
   StyleGuide: '#no-method-missing'
   Enabled: true
