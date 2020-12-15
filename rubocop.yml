@@ -4659,7 +4659,7 @@ Style/WordArray:
   # The `MinSize` option causes the `WordArray` rule to be ignored for arrays
   # smaller than a certain size. The rule is only applied to arrays
   # whose element count is greater than or equal to `MinSize`.
-  MinSize: 2
+  MinSize: 1
   # The regular expression `WordRegex` decides what is considered a word.
   WordRegex: !ruby/regexp '/\A(?:\p{Word}|\p{Word}-\p{Word}|\n|\t)+\z/'
 
@@ -4667,6 +4667,7 @@ Style/YodaCondition:
   Description: 'Forbid or enforce yoda conditions.'
   Reference: 'https://en.wikipedia.org/wiki/Yoda_conditions'
   Enabled: true
+  Severity: error
   EnforcedStyle: forbid_for_all_comparison_operators
   SupportedStyles:
     # check all comparison operators
