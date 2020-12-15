@@ -4684,6 +4684,7 @@ Style/YodaCondition:
 Style/ZeroLengthPredicate:
   Description: 'Use #empty? when testing for objects of length 0.'
   Enabled: true
+  Severity: error
   Safe: false
   VersionAdded: '0.37'
   VersionChanged: '0.39'
