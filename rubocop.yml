@@ -4634,6 +4634,7 @@ Style/WhileUntilDo:
   Description: 'Checks for redundant do after while or until.'
   StyleGuide: '#no-multiline-while-do'
   Enabled: true
+  Severity: error
   VersionAdded: '0.9'
 
 Style/WhileUntilModifier:
@@ -4642,6 +4643,7 @@ Style/WhileUntilModifier:
     single-line body.
   StyleGuide: '#while-as-a-modifier'
   Enabled: true
+  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.30'
 
