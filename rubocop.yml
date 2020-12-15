@@ -4627,6 +4627,7 @@ Style/WhenThen:
   Description: 'Use when x then ... for one-line cases.'
   StyleGuide: '#one-line-cases'
   Enabled: true
+  Severity: error
   VersionAdded: '0.9'
 
 Style/WhileUntilDo:
@@ -4645,12 +4646,10 @@ Style/WhileUntilModifier:
   VersionChanged: '0.30'
 
 Style/WordArray:
-  Description: 'Use %w or %W for arrays of words.'
-  StyleGuide: '#percent-w'
+  Description: 'Use brackets array for strings.'
   Enabled: true
-  VersionAdded: '0.9'
-  VersionChanged: '0.36'
-  EnforcedStyle: percent
+  Severity: error
+  EnforcedStyle: brackets
   SupportedStyles:
     # percent style: %w(word1 word2)
     - percent
