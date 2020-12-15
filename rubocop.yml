@@ -1282,7 +1282,7 @@ Lint/BooleanSymbol:
 
 Lint/CircularArgumentReference:
   Description: "Default values in optional keyword arguments and optional ordinal arguments should not refer back to the name of the argument."
-  Enabled: false
+  Enabled: true
   Severity: error
   VersionAdded: '0.33'
 
@@ -1907,11 +1907,11 @@ Metrics/ModuleLength:
   Max: 100
 
 Metrics/ParameterLists:
-  Description: 'Avoid parameter lists longer than 2 parameters. Use keyword args instead.'
+  Description: 'Avoid parameter lists longer than 3 parameters. Use keyword args instead.'
   StyleGuide: '#too-many-params'
   Enabled: true
   Severity: error
-  Max: 7
+  Max: 3
   CountKeywordArgs: false
   Exclude:
     # Workers `perform` method cant transform to keyword
@@ -2076,7 +2076,7 @@ Naming/HeredocDelimiterNaming:
 Naming/MemoizedInstanceVariableName:
   Description: >-
     Memoized method name should match memo instance variable name.
-  Enabled: false
+  Enabled: true
   Severity: error
   VersionAdded: '0.53'
   VersionChanged: '0.58'
@@ -2108,7 +2108,7 @@ Naming/MethodParameterName:
   Description: >-
                  Checks for method parameter names that contain capital letters,
                  end in numbers, or do not meet a minimal length.
-  Enabled: false
+  Enabled: true
   Severity: error
   VersionAdded: '0.53'
   VersionChanged: '0.77'
@@ -2854,7 +2854,7 @@ Style/GlobalVars:
   Description: 'Do not introduce global variables.'
   StyleGuide: '#instance-vars'
   Reference: 'https://www.zenspider.com/ruby/quickref.html'
-  Enabled: false
+  Enabled: true
   Severity: error
   VersionAdded: '0.13'
   # Built-in global variables are allowed by default.
