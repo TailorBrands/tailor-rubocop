@@ -1907,11 +1907,11 @@ Metrics/ModuleLength:
   Max: 100
 
 Metrics/ParameterLists:
-  Description: 'Avoid parameter lists longer than 3 parameters. Use keyword args instead.'
+  Description: 'Avoid parameter lists longer than 5 parameters. Use keyword args instead.'
   StyleGuide: '#too-many-params'
   Enabled: true
   Severity: error
-  Max: 3
+  Max: 5
   CountKeywordArgs: false
   Exclude:
     # Workers `perform` method cant transform to keyword
