@@ -3671,7 +3671,6 @@ Style/InfiniteLoop:
   Severity: error
   VersionAdded: '0.26'
   VersionChanged: '0.61'
-  SafeAutoCorrect: true
 
 Style/InlineComment:
   Description: 'Avoid trailing inline comments.'
