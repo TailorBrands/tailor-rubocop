@@ -2408,9 +2408,9 @@ Metrics/PerceivedComplexity:
 
 Migration/DepartmentName:
   Description: >-
-  Enabled: false
     Check that cop names in rubocop:disable (etc) comments are
     given with department name.
+  Enabled: false
   VersionAdded: '0.75'
 
 #################### Naming ##############################
