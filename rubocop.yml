@@ -2328,7 +2328,7 @@ Metrics/BlockLength:
   Severity: error
   CountComments: false  # count full line comments?
   Max: 80
-  ExcludedMethods:
+  IgnoredMethods:
     # By default, exclude the `#refine` method, as it tends to have larger
     # associated blocks.
     - refine
@@ -2373,7 +2373,7 @@ Metrics/MethodLength:
   Severity: error
   CountComments: false  # count full line comments?
   Max: 80
-  ExcludedMethods: []
+  IgnoredMethods: []
   Exclude:
     # Migrations are one time thing
     - 'db/migrate/**/*'
@@ -4757,7 +4757,6 @@ Style/SymbolProc:
   Description: 'Use symbols as procs instead of blocks when possible.'
   Enabled: true
   Severity: error
-  SafeAutoCorrect: false
   Safe: false
   VersionAdded: '0.26'
   VersionChanged: '1.5'
