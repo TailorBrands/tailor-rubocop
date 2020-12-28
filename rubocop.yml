@@ -2407,9 +2407,7 @@ Metrics/PerceivedComplexity:
 ################## Migration #############################
 
 Migration/DepartmentName:
-  Description: >-
-    Check that cop names in rubocop:disable (etc) comments are
-    given with department name.
+  Description: 'Check that cop names in rubocop:disable (etc) comments are given with department name.'
   Enabled: false
   VersionAdded: '0.75'
 
