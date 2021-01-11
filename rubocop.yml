@@ -1269,8 +1269,6 @@ Layout/SpaceBeforeBrackets:
   Description: 'Checks for receiver with a space before the opening brackets.'
   StyleGuide: '#space-in-brackets-access'
   Enabled: false
-  VersionAdded: '<<next>>'
-  Safe: false
   VersionAdded: '1.7'
 
 Layout/SpaceBeforeComma:
