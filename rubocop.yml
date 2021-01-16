@@ -159,7 +159,6 @@ AllCops:
 Bundler/DuplicatedGem:
   Description: 'Checks for duplicate gem entries in Gemfile.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.46'
   Include:
     - '**/*.gemfile'
@@ -210,7 +209,6 @@ Bundler/OrderedGems:
 Gemspec/DuplicatedAssignment:
   Description: 'An attribute assignment method calls should be listed only once in a gemspec.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
   Include:
     - '**/*.gemspec'
@@ -230,7 +228,6 @@ Gemspec/OrderedDependencies:
 Gemspec/RequiredRubyVersion:
   Description: 'Checks that `required_ruby_version` of gemspec is specified and equal to `TargetRubyVersion` of .rubocop.yml.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
   VersionChanged: '0.89'
   Include:
@@ -240,7 +237,6 @@ Gemspec/RubyVersionGlobalsUsage:
   Description: Checks usage of RUBY_VERSION in gemspec.
   StyleGuide: '#no-ruby-version-in-the-gemspec'
   Enabled: true
-  Severity: error
   VersionAdded: '0.72'
   Include:
     - '**/*.gemspec'
@@ -251,7 +247,6 @@ Layout/AccessModifierIndentation:
   Description: Check indentation of private/protected visibility modifiers.
   StyleGuide: '#indent-public-private-protected'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: indent
   SupportedStyles:
@@ -267,7 +262,6 @@ Layout/ArgumentAlignment:
     than one line.
   StyleGuide: '#no-double-indent'
   Enabled: true
-  Severity: error
   VersionAdded: '0.68'
   VersionChanged: '0.77'
   # Alignment of arguments in multi-line method calls.
@@ -297,7 +291,6 @@ Layout/ArrayAlignment:
     one line.
   StyleGuide: '#no-double-indent'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '0.77'
   # Alignment of elements of a multi-line array.
@@ -326,7 +319,6 @@ Layout/AssignmentIndentation:
     Checks the indentation of the first line of the
     right-hand-side of a multi-line assignment.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '0.77'
   # By default, the indentation width from `Layout/IndentationWidth` is used
@@ -349,7 +341,6 @@ Layout/BeginEndAlignment:
 Layout/BlockAlignment:
   Description: 'Align block ends correctly.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
   # The value `start_of_block` means that the `end` should be aligned with line
   # where the `do` keyword appears.
@@ -365,14 +356,12 @@ Layout/BlockAlignment:
 Layout/BlockEndNewline:
   Description: 'Put end statement of multiline block on its own line.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/CaseIndentation:
   Description: 'Indentation of when in a case/when/[else/]end.'
   StyleGuide: '#indent-when-to-case'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: case
   SupportedStyles:
@@ -406,19 +395,16 @@ Layout/ClassStructure:
 Layout/ClosingHeredocIndentation:
   Description: 'Checks the indentation of here document closings.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.57'
 
 Layout/ClosingParenthesisIndentation:
   Description: 'Checks the indentation of hanging closing parentheses.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/CommentIndentation:
   Description: 'Indentation of comments.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/ConditionPosition:
@@ -427,14 +413,12 @@ Layout/ConditionPosition:
     the keyword.
   StyleGuide: '#same-line-condition'
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
   VersionChanged: '0.83'
 
 Layout/DefEndAlignment:
   Description: 'Align ends corresponding to defs correctly.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
   # The value `def` means that `end` should be aligned with the def keyword.
   # The value `start_of_line` means that `end` should be aligned with method
@@ -444,13 +428,12 @@ Layout/DefEndAlignment:
   SupportedStylesAlignWith:
     - start_of_line
     - def
-  AutoCorrect: false
+  Severity: warning
 
 Layout/DotPosition:
   Description: 'Checks the position of the dot in multi-line method calls.'
   StyleGuide: '#consistent-multi-line-chains'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: leading
   SupportedStyles:
@@ -460,13 +443,11 @@ Layout/DotPosition:
 Layout/ElseAlignment:
   Description: 'Align elses and elsifs correctly.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/EmptyComment:
   Description: 'Checks empty comment.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
   AllowBorderComment: true
   AllowMarginComment: true
@@ -474,7 +455,6 @@ Layout/EmptyComment:
 Layout/EmptyLineAfterGuardClause:
   Description: 'Add empty line after guard clause.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.56'
   VersionChanged: '0.59'
 
@@ -482,7 +462,6 @@ Layout/EmptyLineAfterMagicComment:
   Description: 'Add an empty line after magic comments to separate them from code.'
   StyleGuide: '#separate-magic-comments-from-code'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/EmptyLineAfterMultilineCondition:
@@ -512,14 +491,12 @@ Layout/EmptyLines:
   Description: "Don't use several empty lines in a row."
   StyleGuide: '#two-or-more-empty-lines'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/EmptyLinesAroundAccessModifier:
   Description: "Keep blank lines around access modifiers."
   StyleGuide: '#empty-lines-around-access-modifier'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: around
   SupportedStyles:
@@ -532,7 +509,6 @@ Layout/EmptyLinesAroundAccessModifier:
 Layout/EmptyLinesAroundArguments:
   Description: "Keeps track of empty lines around method arguments."
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
 
 Layout/EmptyLinesAroundAttributeAccessor:
@@ -552,14 +528,12 @@ Layout/EmptyLinesAroundBeginBody:
   Description: "Keeps track of empty lines around begin-end bodies."
   StyleGuide: '#empty-lines-around-bodies'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/EmptyLinesAroundBlockBody:
   Description: "Keeps track of empty lines around block bodies."
   StyleGuide: '#empty-lines-around-bodies'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: no_empty_lines
   SupportedStyles:
@@ -570,7 +544,6 @@ Layout/EmptyLinesAroundClassBody:
   Description: "Keeps track of empty lines around class bodies."
   StyleGuide: '#empty-lines-around-bodies'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '0.53'
   EnforcedStyle: no_empty_lines
@@ -586,21 +559,18 @@ Layout/EmptyLinesAroundExceptionHandlingKeywords:
   Description: "Keeps track of empty lines around exception handling keywords."
   StyleGuide: '#empty-lines-around-bodies'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/EmptyLinesAroundMethodBody:
   Description: "Keeps track of empty lines around method bodies."
   StyleGuide: '#empty-lines-around-bodies'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/EmptyLinesAroundModuleBody:
   Description: "Keeps track of empty lines around module bodies."
   StyleGuide: '#empty-lines-around-bodies'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: no_empty_lines
   SupportedStyles:
@@ -612,7 +582,6 @@ Layout/EmptyLinesAroundModuleBody:
 Layout/EndAlignment:
   Description: 'Align ends correctly.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
   # The value `keyword` means that `end` should be aligned with the matching
   # keyword (`if`, `while`, etc.).
@@ -626,13 +595,12 @@ Layout/EndAlignment:
     - keyword
     - variable
     - start_of_line
-  AutoCorrect: false
+  Severity: warning
 
 Layout/EndOfLine:
   Description: 'Use Unix-style line endings.'
   StyleGuide: '#crlf'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   # The `native` style means that CR+LF (Carriage Return + Line Feed) is
   # enforced on Windows, and LF is enforced on other platforms. The other styles
@@ -646,7 +614,6 @@ Layout/EndOfLine:
 Layout/ExtraSpacing:
   Description: 'Do not use unnecessary spacing.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   # When true, allows most uses of extra spacing if the intent is to align
   # things with the previous or next line, not counting empty lines or comment
@@ -662,7 +629,6 @@ Layout/ExtraSpacing:
 Layout/FirstArgumentIndentation:
   Description: 'Checks the indentation of the first argument in a method call.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.68'
   VersionChanged: '0.77'
   EnforcedStyle: special_for_inner_method_call_in_parentheses
@@ -690,7 +656,6 @@ Layout/FirstArrayElementIndentation:
     Checks the indentation of the first element in an array
     literal.
   Enabled: true
-  Severity: error
   VersionAdded: '0.68'
   VersionChanged: '0.77'
   # The value `special_inside_parentheses` means that array literals with
@@ -723,7 +688,6 @@ Layout/FirstArrayElementLineBreak:
 Layout/FirstHashElementIndentation:
   Description: 'Checks the indentation of the first key in a hash literal.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.68'
   VersionChanged: '0.77'
   # The value `special_inside_parentheses` means that hash literals with braces
@@ -772,7 +736,6 @@ Layout/FirstParameterIndentation:
     Checks the indentation of the first parameter in a
     method definition.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '0.77'
   EnforcedStyle: consistent
@@ -788,7 +751,6 @@ Layout/HashAlignment:
     Align the elements of a hash literal if they span more than
     one line.
   Enabled: true
-  Severity: error
   AllowMultipleStyles: true
   VersionAdded: '0.49'
   VersionChanged: '0.77'
@@ -874,7 +836,6 @@ Layout/HeredocIndentation:
   Description: 'This cop checks the indentation of the here document bodies.'
   StyleGuide: '#squiggly-heredocs'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '0.85'
 
@@ -882,7 +843,6 @@ Layout/IndentationConsistency:
   Description: 'Keep indentation straight.'
   StyleGuide: '#spaces-indentation'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   # The difference between `indented` and `normal` is that the `indented_internal_methods`
   # style prescribes that in classes and modules the `protected` and `private`
@@ -918,7 +878,6 @@ Layout/IndentationWidth:
   Description: 'Use 2 spaces for indentation.'
   StyleGuide: '#spaces-indentation'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   # Number of spaces for each indentation level.
   Width: 2
@@ -928,14 +887,12 @@ Layout/InitialIndentation:
   Description: >-
     Checks the indentation of the first non-blank non-comment line in a file.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/LeadingCommentSpace:
   Description: 'Comments should start with a space.'
   StyleGuide: '#hash-space'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '0.73'
   AllowDoxygenCommentStyle: false
@@ -944,7 +901,6 @@ Layout/LeadingCommentSpace:
 Layout/LeadingEmptyLines:
   Description: Check for unnecessary blank lines at the beginning of a file.
   Enabled: true
-  Severity: error
   VersionAdded: '0.57'
   VersionChanged: '0.77'
 
@@ -983,7 +939,6 @@ Layout/MultilineArrayBraceLayout:
     either on the same line as the last array element, or
     a new line.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: symmetrical
   SupportedStyles:
@@ -1026,7 +981,6 @@ Layout/MultilineAssignmentLayout:
 Layout/MultilineBlockLayout:
   Description: 'Ensures newlines after multiline block do statements.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/MultilineHashBraceLayout:
@@ -1035,7 +989,6 @@ Layout/MultilineHashBraceLayout:
     either on the same line as the last hash element, or
     a new line.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: symmetrical
   SupportedStyles:
@@ -1066,7 +1019,6 @@ Layout/MultilineMethodCallBraceLayout:
     either on the same line as the last method argument, or
     a new line.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: symmetrical
   SupportedStyles:
@@ -1082,7 +1034,6 @@ Layout/MultilineMethodCallIndentation:
     Checks indentation of method calls with the dot operator
     that span more than one line.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: aligned
   SupportedStyles:
@@ -1099,7 +1050,6 @@ Layout/MultilineMethodDefinitionBraceLayout:
     either on the same line as the last method parameter, or
     a new line.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: symmetrical
   SupportedStyles:
@@ -1115,7 +1065,6 @@ Layout/MultilineOperationIndentation:
     Checks indentation of binary operations that span more than
     one line.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: aligned
   SupportedStyles:
@@ -1131,7 +1080,6 @@ Layout/ParameterAlignment:
     than one line.
   StyleGuide: '#no-double-indent'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '0.77'
   # Alignment of parameters in multi-line method calls.
@@ -1158,21 +1106,18 @@ Layout/ParameterAlignment:
 Layout/RescueEnsureAlignment:
   Description: 'Align rescues and ensures correctly.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceAfterColon:
   Description: 'Use spaces after colons.'
   StyleGuide: '#spaces-operators'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceAfterComma:
   Description: 'Use spaces after commas.'
   StyleGuide: '#spaces-operators'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceAfterMethodName:
@@ -1181,27 +1126,23 @@ Layout/SpaceAfterMethodName:
     parenthesis in a method definition.
   StyleGuide: '#parens-no-spaces'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceAfterNot:
   Description: Tracks redundant space after the ! operator.
   StyleGuide: '#no-space-bang'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceAfterSemicolon:
   Description: 'Use spaces after semicolons.'
   StyleGuide: '#spaces-operators'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceAroundBlockParameters:
   Description: 'Checks the spacing inside and after block parameters pipes.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyleInsidePipes: no_space
   SupportedStylesInsidePipes:
@@ -1215,7 +1156,6 @@ Layout/SpaceAroundEqualsInParameterDefault:
     configuration.
   StyleGuide: '#spaces-around-equals'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: space
   SupportedStyles:
@@ -1225,7 +1165,6 @@ Layout/SpaceAroundEqualsInParameterDefault:
 Layout/SpaceAroundKeyword:
   Description: 'Use a space around keywords if appropriate.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceAroundMethodCallOperator:
@@ -1237,7 +1176,6 @@ Layout/SpaceAroundOperators:
   Description: 'Use a single space around operators.'
   StyleGuide: '#spaces-operators'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   # When `true`, allows most uses of extra spacing if the intent is to align
   # with an operator on the previous or next line, not counting empty lines
@@ -1253,7 +1191,6 @@ Layout/SpaceBeforeBlockBraces:
     Checks that the left block brace has or doesn't have space
     before it.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: space
   SupportedStyles:
@@ -1274,7 +1211,6 @@ Layout/SpaceBeforeBrackets:
 Layout/SpaceBeforeComma:
   Description: 'No spaces before commas.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceBeforeComment:
@@ -1282,7 +1218,6 @@ Layout/SpaceBeforeComment:
     Checks for missing space between code and a comment on the
     same line.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceBeforeFirstArg:
@@ -1290,7 +1225,6 @@ Layout/SpaceBeforeFirstArg:
     Checks that exactly one space is used between a method name
     and the first argument for method calls without parentheses.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   # When `true`, allows most uses of extra spacing if the intent is to align
   # things with the previous or next line, not counting empty lines or comment
@@ -1300,13 +1234,11 @@ Layout/SpaceBeforeFirstArg:
 Layout/SpaceBeforeSemicolon:
   Description: 'No spaces before semicolons.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceInLambdaLiteral:
   Description: 'Checks for spaces in lambda literals.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: require_no_space
   SupportedStyles:
@@ -1316,7 +1248,6 @@ Layout/SpaceInLambdaLiteral:
 Layout/SpaceInsideArrayLiteralBrackets:
   Description: 'Checks the spacing inside array literal brackets.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
   EnforcedStyle: no_space
   SupportedStyles:
@@ -1333,7 +1264,6 @@ Layout/SpaceInsideArrayLiteralBrackets:
 Layout/SpaceInsideArrayPercentLiteral:
   Description: 'No unnecessary additional spaces between elements in %i/%w literals.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceInsideBlockBraces:
@@ -1342,7 +1272,6 @@ Layout/SpaceInsideBlockBraces:
     For blocks taking parameters, checks that the left brace has
     or doesn't have trailing space.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: space
   SupportedStyles:
@@ -1359,7 +1288,6 @@ Layout/SpaceInsideHashLiteralBraces:
   Description: "Use spaces inside hash literal braces - or don't."
   StyleGuide: '#spaces-braces'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: space
   SupportedStyles:
@@ -1378,7 +1306,6 @@ Layout/SpaceInsideParens:
   Description: 'No spaces after ( or before ).'
   StyleGuide: '#spaces-braces'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '0.55'
   EnforcedStyle: no_space
@@ -1389,20 +1316,17 @@ Layout/SpaceInsideParens:
 Layout/SpaceInsidePercentLiteralDelimiters:
   Description: 'No unnecessary spaces inside delimiters of %i/%w/%x literals.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceInsideRangeLiteral:
   Description: 'No spaces inside range literals.'
   StyleGuide: '#no-space-inside-range-literals'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Layout/SpaceInsideReferenceBrackets:
   Description: 'Checks the spacing inside referential brackets.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
   VersionChanged: '0.53'
   EnforcedStyle: no_space
@@ -1418,7 +1342,6 @@ Layout/SpaceInsideStringInterpolation:
   Description: 'Checks for padding/surrounding spaces inside string interpolation.'
   StyleGuide: '#string-interpolation'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   EnforcedStyle: no_space
   SupportedStyles:
@@ -1429,7 +1352,6 @@ Layout/TrailingEmptyLines:
   Description: 'Checks trailing blank lines and final newline.'
   StyleGuide: '#newline-eof'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '0.77'
   EnforcedStyle: final_newline
@@ -1441,7 +1363,6 @@ Layout/TrailingWhitespace:
   Description: 'Avoid trailing whitespace.'
   StyleGuide: '#no-trailing-whitespace'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '1.0'
   AllowInHeredoc: false
@@ -1460,7 +1381,6 @@ Lint/AmbiguousBlockAssociation:
     parentheses.
   StyleGuide: '#syntax'
   Enabled: true
-  Severity: error
   VersionAdded: '0.48'
 
 Lint/AmbiguousOperator:
@@ -1469,7 +1389,6 @@ Lint/AmbiguousOperator:
     method invocation without parentheses.
   StyleGuide: '#method-invocation-parens'
   Enabled: true
-  Severity: error
   VersionAdded: '0.17'
   VersionChanged: '0.83'
 
@@ -1478,7 +1397,6 @@ Lint/AmbiguousRegexpLiteral:
     Checks for ambiguous regexp literals in the first argument of
     a method invocation without parentheses.
   Enabled: true
-  Severity: error
   VersionAdded: '0.17'
   VersionChanged: '0.83'
 
@@ -1486,14 +1404,12 @@ Lint/AssignmentInCondition:
   Description: "Don't use assignment in conditions."
   StyleGuide: '#safe-assignment-in-condition'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   AllowSafeAssignment: true
 
 Lint/BigDecimalNew:
   Description: '`BigDecimal.new()` is deprecated. Use `BigDecimal()` instead.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
 
 Lint/BinaryOperatorWithIdenticalOperands:
@@ -1506,7 +1422,6 @@ Lint/BinaryOperatorWithIdenticalOperands:
 Lint/BooleanSymbol:
   Description: 'Check for `:true` and `:false` symbols.'
   Enabled: true
-  Severity: error
   Safe: false
   VersionAdded: '0.50'
   VersionChanged: '0.83'
@@ -1514,7 +1429,6 @@ Lint/BooleanSymbol:
 Lint/CircularArgumentReference:
   Description: "Default values in optional keyword arguments and optional ordinal arguments should not refer back to the name of the argument."
   Enabled: true
-  Severity: error
   VersionAdded: '0.33'
 
 Lint/ConstantDefinitionInBlock:
@@ -1540,7 +1454,6 @@ Lint/ConstantResolution:
 Lint/Debugger:
   Description: 'Check for debugger calls.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.14'
   VersionChanged: '0.49'
   DebuggerReceivers:
@@ -1563,7 +1476,6 @@ Lint/Debugger:
 Lint/DeprecatedClassMethods:
   Description: 'Check for deprecated class method calls.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.19'
 
 Lint/DeprecatedConstants:
@@ -1602,7 +1514,6 @@ Lint/DeprecatedOpenSSLConstant:
 Lint/DisjunctiveAssignmentInConstructor:
   Description: 'In constructor, plain assignment is preferred over disjunctive.'
   Enabled: true
-  Severity: error
   Safe: false
   VersionAdded: '0.62'
   VersionChanged: '0.88'
@@ -1618,7 +1529,6 @@ Lint/DuplicateBranch:
 Lint/DuplicateCaseCondition:
   Description: 'Do not repeat values in case conditionals.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.45'
 
 Lint/DuplicateElsifCondition:
@@ -1629,14 +1539,12 @@ Lint/DuplicateElsifCondition:
 Lint/DuplicateHashKey:
   Description: 'Check for duplicate keys in hash literals.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.34'
   VersionChanged: '0.77'
 
 Lint/DuplicateMethods:
   Description: 'Check for duplicate method definitions.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.29'
 
 Lint/DuplicateRegexpCharacterClassElement:
@@ -1657,13 +1565,11 @@ Lint/DuplicateRescueException:
 Lint/EachWithObjectArgument:
   Description: 'Check for immutable argument given to each_with_object.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.31'
 
 Lint/ElseLayout:
   Description: 'Check for odd code arrangement in an else block.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.17'
   VersionChanged: '1.2'
 
@@ -1690,15 +1596,12 @@ Lint/EmptyConditionalBody:
 Lint/EmptyEnsure:
   Description: 'Checks for empty ensure block.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.10'
   VersionChanged: '0.48'
-  AutoCorrect: false
 
 Lint/EmptyExpression:
   Description: 'Checks for empty expressions.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.45'
 
 Lint/EmptyFile:
@@ -1710,14 +1613,12 @@ Lint/EmptyFile:
 Lint/EmptyInterpolation:
   Description: 'Checks for empty string interpolation.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.20'
   VersionChanged: '0.45'
 
 Lint/EmptyWhen:
   Description: 'Checks for `when` branches with empty bodies.'
   Enabled: true
-  Severity: error
   AllowComments: true
   VersionAdded: '0.45'
   VersionChanged: '0.83'
@@ -1726,21 +1627,18 @@ Lint/EnsureReturn:
   Description: 'Do not use return in an ensure block.'
   StyleGuide: '#no-return-ensure'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.83'
 
 Lint/ErbNewArguments:
   Description: 'Use `:trim_mode` and `:eoutvar` keyword arguments to `ERB.new`.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.56'
 
 Lint/FlipFlop:
   Description: 'Checks for flip-flops.'
   StyleGuide: '#no-flip-flops'
   Enabled: true
-  Severity: error
   VersionAdded: '0.16'
 
 Lint/FloatComparison:
@@ -1754,13 +1652,11 @@ Lint/FloatOutOfRange:
     Catches floating-point literals too large or small for Ruby to
     represent.
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
 
 Lint/FormatParameterMismatch:
   Description: 'The number of parameters to format/sprint must match the fields.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.33'
 
 Lint/HashCompareByIdentity:
@@ -1789,7 +1685,6 @@ Lint/ImplicitStringConcatenation:
     Checks for adjacent string literals on the same line, which
     could better be represented as a single string literal.
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
 
 Lint/IneffectiveAccessModifier:
@@ -1797,13 +1692,11 @@ Lint/IneffectiveAccessModifier:
     Checks for attempts to use `private` or `protected` to set
     the visibility of a class method, which does not work.
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
 
 Lint/InheritException:
   Description: 'Avoid inheriting from the `Exception` class.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.41'
   # The default base class in favour of `Exception`.
   EnforcedStyle: runtime_error
@@ -1814,7 +1707,6 @@ Lint/InheritException:
 Lint/InterpolationCheck:
   Description: 'Raise warning for interpolation in single q strs.'
   Enabled: true
-  Severity: error
   Safe: false
   VersionAdded: '0.50'
   VersionChanged: '0.87'
@@ -1827,13 +1719,11 @@ Lint/LambdaWithoutLiteralBlock:
 Lint/LiteralAsCondition:
   Description: 'Checks of literals used in conditions.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.51'
 
 Lint/LiteralInInterpolation:
   Description: 'Checks for literals used in interpolation.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.19'
   VersionChanged: '0.32'
 
@@ -1843,7 +1733,6 @@ Lint/Loop:
     begin/end/while for post-loop tests.
   StyleGuide: '#loop-with-break'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '1.3'
   Safe: false
@@ -1851,7 +1740,6 @@ Lint/Loop:
 Lint/MissingCopEnableDirective:
   Description: 'Checks for a `# rubocop:enable` after `# rubocop:disable`.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
   # Maximum number of consecutive lines the cop can be disabled for.
   # 0 allows only single-line disables
@@ -1878,7 +1766,6 @@ Lint/MixedRegexpCaptureTypes:
 Lint/MultipleComparison:
   Description: "Use `&&` operator to compare multiple values."
   Enabled: true
-  Severity: error
   VersionAdded: '0.47'
   VersionChanged: '1.1'
   AllowMethodComparison: true
@@ -1887,13 +1774,11 @@ Lint/NestedMethodDefinition:
   Description: 'Do not use nested method definitions.'
   StyleGuide: '#no-nested-methods'
   Enabled: true
-  Severity: error
   VersionAdded: '0.32'
 
 Lint/NestedPercentLiteral:
   Description: 'Checks for nested percent literals.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
 
 Lint/NextWithoutAccumulator:
@@ -1901,7 +1786,6 @@ Lint/NextWithoutAccumulator:
     Do not omit the accumulator when calling `next`
     in a `reduce`/`inject` block.
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
 
 Lint/NoReturnInBeginEndBlocks:
@@ -1912,14 +1796,12 @@ Lint/NoReturnInBeginEndBlocks:
 Lint/NonDeterministicRequireOrder:
   Description: 'Always sort arrays returned by Dir.glob when requiring files.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.78'
   Safe: false
 
 Lint/NonLocalExitFromIterator:
   Description: 'Do not use return in iterator to cause non-local exit.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.30'
 
 Lint/NumberConversion:
@@ -1933,10 +1815,20 @@ Lint/NumberConversion:
     - Time
     - DateTime
 
+Lint/NumberedParameterAssignment:
+  Description: 'Checks for uses of numbered parameter assignment.'
+  Enabled: false
+  VersionAdded: '<<next>>'
+
+Lint/OrAssignmentToConstant:
+  Description: 'Checks unintended or-assignment to constant.'
+  Enabled: false
+  Safe: false
+  VersionAdded: '<<next>>'
+
 Lint/OrderedMagicComments:
   Description: 'Checks the proper ordering of magic comments and whether a magic comment is not placed before a shebang.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
 
 Lint/OutOfRangeRegexpRef:
@@ -1951,7 +1843,6 @@ Lint/ParenthesesAsGroupedExpression:
     parenthesis.
   StyleGuide: '#parens-no-spaces'
   Enabled: true
-  Severity: error
   VersionAdded: '0.12'
   VersionChanged: '0.83'
 
@@ -1959,7 +1850,6 @@ Lint/PercentStringArray:
   Description: >-
     Checks for unwanted commas and quotes in %w/%W literals.
   Enabled: true
-  Severity: error
   Safe: false
   VersionAdded: '0.41'
 
@@ -1967,7 +1857,6 @@ Lint/PercentSymbolArray:
   Description: >-
     Checks for unwanted commas and colons in %i/%I literals.
   Enabled: true
-  Severity: error
   VersionAdded: '0.41'
 
 Lint/RaiseException:
@@ -1985,7 +1874,6 @@ Lint/RandOne:
     Checks for `rand(1)` calls. Such calls always return `0`
     and most likely a mistake.
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
 
 Lint/RedundantCopDisableDirective:
@@ -1994,13 +1882,11 @@ Lint/RedundantCopDisableDirective:
     Note: this cop is not disabled when disabling all cops.
     It must be explicitly disabled.
   Enabled: true
-  Severity: error
   VersionAdded: '0.76'
 
 Lint/RedundantCopEnableDirective:
   Description: Checks for rubocop:enable comments that can be removed.
   Enabled: true
-  Severity: error
   VersionAdded: '0.76'
 
 Lint/RedundantDirGlobSort:
@@ -2011,7 +1897,6 @@ Lint/RedundantDirGlobSort:
 Lint/RedundantRequireStatement:
   Description: 'Checks for unnecessary `require` statement.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.76'
 
 Lint/RedundantSafeNavigation:
@@ -2030,7 +1915,6 @@ Lint/RedundantSafeNavigation:
 Lint/RedundantSplatExpansion:
   Description: 'Checks for splat unnecessarily being called on literals.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.76'
   VersionChanged: '1.7'
   AllowPercentLiteralArrayArgument: true
@@ -2039,20 +1923,17 @@ Lint/RedundantStringCoercion:
   Description: 'Checks for Object#to_s usage in string interpolation.'
   StyleGuide: '#no-to-s'
   Enabled: true
-  Severity: error
   VersionAdded: '0.19'
   VersionChanged: '0.77'
 
 Lint/RedundantWithIndex:
   Description: 'Checks for redundant `with_index`.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
 
 Lint/RedundantWithObject:
   Description: 'Checks for redundant `with_object`.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.51'
 
 Lint/RegexpAsCondition:
@@ -2060,7 +1941,6 @@ Lint/RegexpAsCondition:
     Do not use regexp literal as a condition.
     The regexp literal matches `$_` implicitly.
   Enabled: true
-  Severity: error
   VersionAdded: '0.51'
   VersionChanged: '0.86'
 
@@ -2069,33 +1949,28 @@ Lint/RequireParentheses:
     Use parentheses in the method call to avoid confusion
     about precedence.
   Enabled: true
-  Severity: error
   VersionAdded: '0.18'
 
 Lint/RescueException:
   Description: 'Avoid rescuing the Exception class.'
   StyleGuide: '#no-blind-rescues'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.27'
 
 Lint/RescueType:
   Description: 'Avoid rescuing from non constants that could result in a `TypeError`.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
 
 Lint/ReturnInVoidContext:
   Description: 'Checks for return in void context.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
 
 Lint/SafeNavigationChain:
   Description: 'Do not chain ordinary method call after safe navigation operator.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.47'
   VersionChanged: '0.77'
   AllowedMethods:
@@ -2112,7 +1987,6 @@ Lint/SafeNavigationConsistency:
     call in an `&&` or `||` condition that safe navigation is used
     for all method calls on that same object.
   Enabled: true
-  Severity: error
   VersionAdded: '0.55'
   VersionChanged: '0.77'
   AllowedMethods:
@@ -2125,14 +1999,12 @@ Lint/SafeNavigationConsistency:
 Lint/SafeNavigationWithEmpty:
   Description: 'Avoid `foo&.empty?` in conditionals.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.62'
   VersionChanged: '0.87'
 
 Lint/ScriptPermission:
   Description: 'Grant script file execute permission.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '0.50'
 
@@ -2144,13 +2016,11 @@ Lint/SelfAssignment:
 Lint/SendWithMixinArgument:
   Description: 'Checks for `send` method when using mixin.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.75'
 
 Lint/ShadowedArgument:
   Description: 'Avoid reassigning arguments before they were used.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
   IgnoreImplicitReferences: false
 
@@ -2160,7 +2030,6 @@ Lint/ShadowedException:
     Avoid rescuing a higher level exception
     before a lower level exception.
   Enabled: true
-  Severity: error
   VersionAdded: '0.41'
 
 Lint/ShadowingOuterLocalVariable:
@@ -2168,7 +2037,6 @@ Lint/ShadowingOuterLocalVariable:
     Do not use the same name as outer local variable
     for block arguments or block local variables.
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
 
 Lint/StructNewOverride:
@@ -2180,15 +2048,19 @@ Lint/SuppressedException:
   Description: "Don't suppress exceptions."
   StyleGuide: '#dont-hide-exceptions'
   Enabled: true
-  Severity: error
+  AllowComments: true
   VersionAdded: '0.9'
   VersionChanged: '0.81'
 
+Lint/SymbolConversion:
+  Description: 'Checks for unnecessary symbol conversions.'
+  Enabled: false
+  VersionAdded: <<next>>
+
 Lint/Syntax:
-  Description: 'Checks syntax error.'
+  Description: 'Checks for syntax errors.'
   Enabled: true
   VersionAdded: '0.9'
-
 
 Lint/ToEnumArguments:
   Description: 'This cop ensures that `to_enum`/`enum_for`, called for the current method, has correct arguments.'
@@ -2198,7 +2070,6 @@ Lint/ToEnumArguments:
 Lint/ToJSON:
   Description: 'Ensure #to_json includes an optional argument.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.66'
 
 Lint/TopLevelReturnWithArgument:
@@ -2214,7 +2085,6 @@ Lint/TrailingCommaInAttributeDeclaration:
 Lint/UnderscorePrefixedVariableName:
   Description: 'Do not use prefix `_` for a variable that is used.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.21'
   AllowKeywordBlockArguments: false
 
@@ -2238,7 +2108,6 @@ Lint/UnexpectedBlockArity:
 Lint/UnifiedInteger:
   Description: 'Use Integer instead of Fixnum or Bignum.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.43'
 
 Lint/UnmodifiedReduceAccumulator:
@@ -2250,7 +2119,6 @@ Lint/UnmodifiedReduceAccumulator:
 Lint/UnreachableCode:
   Description: 'Unreachable code.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
 
 Lint/UnreachableLoop:
@@ -2267,7 +2135,6 @@ Lint/UnusedBlockArgument:
   Description: 'Checks for unused block arguments.'
   StyleGuide: '#underscore-unused-vars'
   Enabled: true
-  Severity: error
   VersionAdded: '0.21'
   VersionChanged: '0.22'
   IgnoreEmptyBlocks: true
@@ -2277,7 +2144,6 @@ Lint/UnusedMethodArgument:
   Description: 'Checks for unused method arguments.'
   StyleGuide: '#underscore-unused-vars'
   Enabled: true
-  Severity: error
   VersionAdded: '0.21'
   VersionChanged: '0.81'
   AllowUnusedKeywordArguments: false
@@ -2293,19 +2159,16 @@ Lint/UriEscapeUnescape:
     `CGI.unescape`, `URI.decode_www_form` or `URI.decode_www_form_component`
     depending on your specific use case.
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
 
 Lint/UriRegexp:
   Description: 'Use `URI::DEFAULT_PARSER.make_regexp` instead of `URI.regexp`.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
 
 Lint/UselessAccessModifier:
   Description: 'Checks for useless access modifiers.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.20'
   VersionChanged: '0.83'
   ContextCreatingMethods: []
@@ -2315,13 +2178,11 @@ Lint/UselessAssignment:
   Description: 'Checks for useless assignment to a local variable.'
   StyleGuide: '#underscore-unused-vars'
   Enabled: true
-  Severity: error
   VersionAdded: '0.11'
 
 Lint/UselessElseWithoutRescue:
   Description: 'Checks for useless `else` in `begin..end` without `rescue`.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.17'
 
 Lint/UselessMethodDefinition:
@@ -2334,7 +2195,6 @@ Lint/UselessMethodDefinition:
 Lint/UselessSetterCall:
   Description: 'Checks for useless setter call to a local variable.'
   Enabled: true
-  Severity: error
   SafeAutoCorrect: false
   VersionAdded: '0.13'
   VersionChanged: '1.2'
@@ -2349,7 +2209,6 @@ Lint/UselessTimes:
 Lint/Void:
   Description: 'Possible use of operator/literal/variable in void context.'
   Enabled: false
-  Severity: error
   VersionAdded: '0.9'
   CheckForMethodsWithNoSideEffects: false
 
@@ -2374,7 +2233,6 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Description: 'Avoid long blocks with many lines.'
   Enabled: false
-  Severity: error
   VersionAdded: '0.44'
   VersionChanged: '1.5'
   CountComments: false  # count full line comments?
@@ -2394,7 +2252,6 @@ Metrics/BlockNesting:
   Description: 'Avoid excessive block nesting.'
   StyleGuide: '#three-is-the-number-thou-shalt-count'
   Enabled: true
-  Severity: error
   VersionAdded: '0.25'
   VersionChanged: '0.47'
   CountBlocks: false
@@ -2429,7 +2286,6 @@ Metrics/MethodLength:
   Description: 'Avoid methods longer than 80 lines of code.'
   StyleGuide: '#short-methods'
   Enabled: false
-  Severity: error
   VersionAdded: '0.25'
   VersionChanged: '1.5'
   CountComments: false  # count full line comments?
@@ -2473,8 +2329,6 @@ Metrics/PerceivedComplexity:
 ################## Migration #############################
 
 Migration/DepartmentName:
-  Description: 'Check that cop names in rubocop:disable (etc) comments are given with department name.'
-  Enabled: false
   VersionAdded: '0.75'
 
 #################### Naming ##############################
@@ -2483,14 +2337,12 @@ Naming/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
   StyleGuide: '#accessor_mutator_method_names'
   Enabled: false
-  Severity: error
   VersionAdded: '0.50'
 
 Naming/AsciiIdentifiers:
   Description: 'Use only ascii symbols in identifiers and constants.'
   StyleGuide: '#english-identifiers'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
   VersionChanged: '0.87'
   AsciiConstants: true
@@ -2499,7 +2351,6 @@ Naming/BinaryOperatorParameterName:
   Description: 'When defining binary operators, name the argument other.'
   StyleGuide: '#other-arg'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
   VersionChanged: '1.2'
 
@@ -2508,7 +2359,6 @@ Naming/BlockParameterName:
     Checks for block parameter names that contain capital letters,
     end in numbers, or do not meet a minimal length.
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
   VersionChanged: '0.77'
   # Parameter names may be equal to or greater than this value
@@ -2523,7 +2373,6 @@ Naming/ClassAndModuleCamelCase:
   Description: 'Use CamelCase for classes and modules.'
   StyleGuide: '#camelcase-classes'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
   VersionChanged: '0.85'
   # Allowed class/module names can be specified here.
@@ -2535,20 +2384,16 @@ Naming/ConstantName:
   Description: 'Constants should use SCREAMING_SNAKE_CASE.'
   StyleGuide: '#screaming-snake-case'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
 
 Naming/FileName:
   Description: 'Use snake_case for source file names.'
   StyleGuide: '#snake-case-files'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
   # Camel case file names listed in `AllCops:Include` and all file names listed
   # in `AllCops:Exclude` are excluded by default. Add extra excludes here.
-  Exclude: [
-    "Gemfile.ruby"
-  ]
+  Exclude: []
   # When `true`, requires that each source file should define a class or module
   # with a name which matches the file name (converted to ... case).
   # It further expects it to be nested inside modules which match the names
@@ -2613,7 +2458,6 @@ Naming/HeredocDelimiterCase:
   Description: 'Use configured case for heredoc delimiters.'
   StyleGuide: '#heredoc-delimiters'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
   VersionChanged: '1.2'
   EnforcedStyle: uppercase
@@ -2625,7 +2469,6 @@ Naming/HeredocDelimiterNaming:
   Description: 'Use descriptive heredoc delimiters.'
   StyleGuide: '#heredoc-delimiters'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
   ForbiddenDelimiters:
     - !ruby/regexp '/(^|\s)(EO[A-Z]{1}|END)(\s|$)/'
@@ -2634,7 +2477,6 @@ Naming/MemoizedInstanceVariableName:
   Description: >-
     Memoized method name should match memo instance variable name.
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
   VersionChanged: '1.2'
   EnforcedStyleForLeadingUnderscores: disallowed
@@ -2647,7 +2489,6 @@ Naming/MethodName:
   Description: 'Use the configured style when naming methods.'
   StyleGuide: '#snake-case-symbols-methods-vars'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
   EnforcedStyle: snake_case
   SupportedStyles:
@@ -2666,7 +2507,6 @@ Naming/MethodParameterName:
     Checks for method parameter names that contain capital letters,
     end in numbers, or do not meet a minimal length.
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
   VersionChanged: '0.77'
   # Parameter names may be equal to or greater than this value
@@ -2721,7 +2561,6 @@ Naming/PredicateName:
 Naming/RescuedExceptionsVariableName:
   Description: 'Use consistent rescued exceptions variables naming.'
   Enabled: true
-  Severity: error
   PreferredName: err
   VersionAdded: '0.67'
   VersionChanged: '0.68'
@@ -2730,7 +2569,6 @@ Naming/VariableName:
   Description: 'Use the configured style when naming variables.'
   StyleGuide: '#snake-case-symbols-methods-vars'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
   VersionChanged: '1.8'
   EnforcedStyle: snake_case
@@ -2765,7 +2603,6 @@ Naming/VariableNumber:
 Security/Eval:
   Description: 'The use of eval represents a serious security risk.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.47'
 
 Security/JSONLoad:
@@ -2774,7 +2611,6 @@ Security/JSONLoad:
     security issues. See reference for more information.
   Reference: 'https://ruby-doc.org/stdlib-2.7.0/libdoc/json/rdoc/JSON.html#method-i-load'
   Enabled: true
-  Severity: error
   VersionAdded: '0.43'
   VersionChanged: '0.44'
   # Autocorrect here will change to a method that may cause crashes depending
@@ -2788,13 +2624,11 @@ Security/MarshalLoad:
     security issues. See reference for more information.
   Reference: 'https://ruby-doc.org/core-2.7.0/Marshal.html#module-Marshal-label-Security+considerations'
   Enabled: true
-  Severity: error
   VersionAdded: '0.47'
 
 Security/Open:
   Description: 'The use of `Kernel#open` and `URI.open` represent a serious security risk.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
   VersionChanged: '1.0'
   Safe: false
@@ -2805,7 +2639,6 @@ Security/YAMLLoad:
     security issues. See reference for more information.
   Reference: 'https://ruby-doc.org/stdlib-2.7.0/libdoc/yaml/rdoc/YAML.html#module-YAML-label-Security'
   Enabled: true
-  Severity: error
   VersionAdded: '0.47'
   SafeAutoCorrect: false
 
@@ -2814,7 +2647,6 @@ Security/YAMLLoad:
 Style/AccessModifierDeclarations:
   Description: 'Checks style of how access modifiers are used.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.57'
   VersionChanged: '0.81'
   EnforcedStyle: group
@@ -2838,7 +2670,6 @@ Style/Alias:
   Description: 'Use alias instead of alias_method.'
   StyleGuide: '#alias-method-lexically'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.36'
   EnforcedStyle: prefer_alias
@@ -2850,7 +2681,6 @@ Style/AndOr:
   Description: 'Use &&/|| instead of and/or.'
   StyleGuide: '#no-and-or-or'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.25'
   # Whether `and` and `or` are banned only in conditionals (conditionals)
@@ -2880,7 +2710,6 @@ Style/ArrayJoin:
   Description: 'Use Array#join instead of Array#*.'
   StyleGuide: '#array-join'
   Enabled: true
-  Severity: error
   VersionAdded: '0.20'
   VersionChanged: '0.31'
 
@@ -2888,7 +2717,6 @@ Style/AsciiComments:
   Description: 'Use only ascii symbols in comments.'
   StyleGuide: '#english-comments'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.52'
   AllowedChars: []
@@ -2897,7 +2725,6 @@ Style/Attr:
   Description: 'Checks for uses of Module#attr.'
   StyleGuide: '#attr'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.12'
 
@@ -2910,7 +2737,6 @@ Style/BarePercentLiterals:
   Description: 'Checks if usage of %() or %Q() matches configuration.'
   StyleGuide: '#percent-q-shorthand'
   Enabled: true
-  Severity: error
   VersionAdded: '0.25'
   EnforcedStyle: bare_percent
   SupportedStyles:
@@ -2921,7 +2747,6 @@ Style/BeginBlock:
   Description: 'Avoid the use of BEGIN blocks.'
   StyleGuide: '#no-BEGIN-blocks'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
 
 Style/BisectedAttrAccessor:
@@ -2935,7 +2760,6 @@ Style/BlockComments:
   Description: 'Do not use block comments.'
   StyleGuide: '#no-block-comments'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.23'
 
@@ -2946,7 +2770,6 @@ Style/BlockDelimiters:
     Prefer {...} over do...end for single-line blocks.
   StyleGuide: '#single-line-blocks'
   Enabled: true
-  Severity: error
   EnforcedStyle: braces_for_chaining
   VersionAdded: '0.30'
   VersionChanged: '0.35'
@@ -3077,7 +2900,6 @@ Style/CharacterLiteral:
   Description: 'Checks for uses of character literals.'
   StyleGuide: '#no-character-literals'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
 
 Style/ClassAndModuleChildren:
@@ -3089,7 +2911,6 @@ Style/ClassAndModuleChildren:
   # have the knowledge to perform either operation safely and thus requires
   # manual oversight.
   SafeAutoCorrect: false
-  AutoCorrect: false
   Enabled: false
   VersionAdded: '0.19'
   #
@@ -3115,7 +2936,6 @@ Style/ClassCheck:
   Description: 'Enforces consistent use of `Object#is_a?` or `Object#kind_of?`.'
   StyleGuide: '#is-a-vs-kind-of'
   Enabled: true
-  Severity: error
   VersionAdded: '0.24'
   EnforcedStyle: is_a?
   SupportedStyles:
@@ -3136,7 +2956,6 @@ Style/ClassMethods:
   Description: 'Use self when defining module/class methods.'
   StyleGuide: '#def-self-class-methods'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.20'
 
@@ -3154,7 +2973,6 @@ Style/ClassVars:
   Description: 'Avoid the use of class variables.'
   StyleGuide: '#no-class-vars'
   Enabled: false
-  Severity: error
   VersionAdded: '0.13'
 
 Style/CollectionCompact:
@@ -3195,14 +3013,12 @@ Style/ColonMethodCall:
   Description: 'Do not use :: for method call.'
   StyleGuide: '#double-colons'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
 
 Style/ColonMethodDefinition:
   Description: 'Do not use :: for defining class methods.'
   StyleGuide: '#colon-method-definition'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
 
 Style/CombinableLoops:
@@ -3217,7 +3033,6 @@ Style/CommandLiteral:
   Description: 'Use `` or %x around command literals.'
   StyleGuide: '#percent-x'
   Enabled: true
-  Severity: error
   VersionAdded: '0.30'
   EnforcedStyle: backticks
   # backticks: Always use backticks.
@@ -3238,7 +3053,6 @@ Style/CommentAnnotation:
     (TODO, FIXME, OPTIMIZE, HACK, REVIEW, NOTE).
   StyleGuide: '#annotate-keywords'
   Enabled: true
-  Severity: error
   VersionAdded: '0.10'
   VersionChanged: '1.3'
   Keywords:
@@ -3252,7 +3066,6 @@ Style/CommentAnnotation:
 Style/CommentedKeyword:
   Description: 'Do not place comments on the same line as certain keywords.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.51'
   VersionChanged: '1.7'
 
@@ -3262,7 +3075,6 @@ Style/ConditionalAssignment:
     assignment to a variable and variable comparison instead
     of assigning that variable inside of each branch.
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
   VersionChanged: '0.47'
   EnforcedStyle: assign_to_condition
@@ -3300,7 +3112,6 @@ Style/ConstantVisibility:
 #
 # Style/Copyright:
 #   Enabled: true
-  Severity: error
 #   Notice: 'Copyright (\(c\) )?2015 Yahoo! Inc'
 #   AutocorrectNotice: '# Copyright (c) 2015 Yahoo! Inc.'
 #
@@ -3324,7 +3135,6 @@ Style/DefWithParentheses:
   Description: 'Use def with parentheses when there are arguments.'
   StyleGuide: '#method-parens'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.12'
 
@@ -3370,7 +3180,6 @@ Style/DocumentationMethod:
 Style/DoubleCopDisableDirective:
   Description: 'Checks for double rubocop:disable comments on a single line.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.73'
 
 Style/DoubleNegation:
@@ -3390,32 +3199,27 @@ Style/EachForSimpleLoop:
     Use `Integer#times` for a simple loop which iterates a fixed
     number of times.
   Enabled: true
-  Severity: error
   VersionAdded: '0.41'
 
 Style/EachWithObject:
   Description: 'Prefer `each_with_object` over `inject` or `reduce`.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.22'
   VersionChanged: '0.42'
 
 Style/EmptyBlockParameter:
   Description: 'Omit pipes for empty block parameters.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
 
 Style/EmptyCaseCondition:
   Description: 'Avoid empty condition in case statements.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.40'
 
 Style/EmptyElse:
   Description: 'Avoid empty else-clauses.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.28'
   VersionChanged: '0.32'
   EnforcedStyle: both
@@ -3430,14 +3234,12 @@ Style/EmptyElse:
 Style/EmptyLambdaParameter:
   Description: 'Omit parens for empty lambda parameters.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
 
 Style/EmptyLiteral:
   Description: 'Prefer literals to Array.new/Hash.new/String.new.'
   StyleGuide: '#literal-array-hash'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.12'
 
@@ -3445,7 +3247,6 @@ Style/EmptyMethod:
   Description: 'Checks the formatting of empty method definitions.'
   StyleGuide: '#no-single-line-methods'
   Enabled: true
-  Severity: error
   VersionAdded: '0.46'
   EnforcedStyle: compact
   SupportedStyles:
@@ -3456,7 +3257,6 @@ Style/Encoding:
   Description: 'Use UTF-8 as the source file encoding.'
   StyleGuide: '#utf-8'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.50'
 
@@ -3464,7 +3264,6 @@ Style/EndBlock:
   Description: 'Avoid the use of END blocks.'
   StyleGuide: '#no-END-blocks'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.81'
 
@@ -3482,21 +3281,18 @@ Style/EndlessMethod:
 Style/EvalWithLocation:
   Description: 'Pass `__FILE__` and `__LINE__` to `eval` method, as they are used by backtraces.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
 
 Style/EvenOdd:
   Description: 'Favor the use of `Integer#even?` && `Integer#odd?`.'
   StyleGuide: '#predicate-methods'
   Enabled: true
-  Severity: error
   VersionAdded: '0.12'
   VersionChanged: '0.29'
 
 Style/ExpandPathArguments:
   Description: "Use `expand_path(__dir__)` instead of `expand_path('..', __FILE__)`."
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
 
 Style/ExplicitBlockArgument:
@@ -3505,9 +3301,8 @@ Style/ExplicitBlockArgument:
     that just passes its arguments to another block.
   StyleGuide: '#block-argument'
   Enabled: true
-  # May change the yielding arity.
-  Safe: false
   VersionAdded: '0.89'
+  VersionChanged: '1.8'
 
 Style/ExponentialNotation:
   Description: 'When using exponential notation, favor a mantissa between 1 (inclusive) and 10 (exclusive).'
@@ -3524,10 +3319,10 @@ Style/FloatDivision:
   Description: 'For performing float division, coerce one side only.'
   StyleGuide: '#float-division'
   Enabled: false
-  Severity: error
   Reference: 'https://blog.rubystyle.guide/ruby/2019/06/21/float-division.html'
   VersionAdded: '0.72'
-  VersionChanged: '1.6'
+  VersionChanged: <<next>>
+  Safe: false
   EnforcedStyle: single_coerce
   SupportedStyles:
     - left_coerce
@@ -3539,7 +3334,6 @@ Style/For:
   Description: 'Checks use of for or each in multiline loops.'
   StyleGuide: '#no-for-loops'
   Enabled: true
-  Severity: error
   VersionAdded: '0.13'
   VersionChanged: '0.59'
   EnforcedStyle: each
@@ -3551,7 +3345,6 @@ Style/FormatString:
   Description: 'Enforce the use of Kernel#sprintf, Kernel#format or String#%.'
   StyleGuide: '#sprintf'
   Enabled: true
-  Severity: error
   VersionAdded: '0.19'
   VersionChanged: '0.49'
   EnforcedStyle: format
@@ -3563,7 +3356,6 @@ Style/FormatString:
 Style/FormatStringToken:
   Description: 'Use a consistent style for format string tokens.'
   Enabled: true
-  Severity: error
   EnforcedStyle: annotated
   SupportedStyles:
     # Prefer tokens which contain a sprintf like type annotation like
@@ -3578,13 +3370,13 @@ Style/FormatStringToken:
   MaxUnannotatedPlaceholdersAllowed: 1
   VersionAdded: '0.49'
   VersionChanged: '1.0'
+  IgnoredMethods: []
 
 Style/FrozenStringLiteralComment:
   Description: >-
     Add the frozen_string_literal comment to the top of files
     to help transition to frozen string literals by default.
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
   VersionChanged: '0.79'
   EnforcedStyle: always
@@ -3614,7 +3406,6 @@ Style/GlobalVars:
   StyleGuide: '#instance-vars'
   Reference: 'https://www.zenspider.com/ruby/quickref.html'
   Enabled: true
-  Severity: error
   VersionAdded: '0.13'
   # Built-in global variables are allowed by default.
   AllowedVariables: []
@@ -3623,7 +3414,6 @@ Style/GuardClause:
   Description: 'Check for conditionals that can be replaced with guard clauses.'
   StyleGuide: '#no-nested-conditionals'
   Enabled: true
-  Severity: error
   VersionAdded: '0.20'
   VersionChanged: '0.22'
   # `MinBodyLength` defines the number of lines of the a body of an `if` or `unless`
@@ -3672,7 +3462,6 @@ Style/HashSyntax:
     { :a => 1, :b => 2 }.
   StyleGuide: '#hash-literals'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.43'
   EnforcedStyle: ruby19
@@ -3710,13 +3499,11 @@ Style/IdenticalConditionalBranches:
     line at the end of each branch, which can validly be moved
     out of the conditional.
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
 
 Style/IfInsideElse:
   Description: 'Finds if nodes inside else, which can be converted to elsif.'
   Enabled: true
-  Severity: error
   AllowIfModifier: false
   VersionAdded: '0.36'
   VersionChanged: '1.3'
@@ -3727,7 +3514,6 @@ Style/IfUnlessModifier:
     single-line body.
   StyleGuide: '#if-as-a-modifier'
   Enabled: false
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.30'
 
@@ -3735,7 +3521,6 @@ Style/IfUnlessModifierOfIfUnless:
   Description: >-
     Avoid modifier if/unless usage on conditionals.
   Enabled: true
-  Severity: error
   VersionAdded: '0.39'
   VersionChanged: '0.87'
 
@@ -3743,7 +3528,6 @@ Style/IfWithSemicolon:
   Description: 'Do not use if x; .... Use the ternary operator instead.'
   StyleGuide: '#no-semicolon-ifs'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.83'
 
@@ -3761,7 +3545,6 @@ Style/InfiniteLoop:
   Safe: false
   StyleGuide: '#infinite-loop'
   Enabled: true
-  Severity: error
   VersionAdded: '0.26'
   VersionChanged: '0.61'
 
@@ -3775,7 +3558,6 @@ Style/InverseMethods:
     Use the inverse method instead of `!.method`
     if an inverse method is defined.
   Enabled: true
-  Severity: error
   Safe: false
   VersionAdded: '0.48'
   # `InverseMethods` are methods that can be inverted by a not (`not` or `!`)
@@ -3824,7 +3606,6 @@ Style/Lambda:
   Description: 'Use the new lambda literal syntax for single-line blocks.'
   StyleGuide: '#lambda-multi-line'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.40'
   EnforcedStyle: line_count_dependent
@@ -3837,7 +3618,6 @@ Style/LambdaCall:
   Description: 'Use lambda.call(...) instead of lambda.(...).'
   StyleGuide: '#proc-call'
   Enabled: true
-  Severity: error
   VersionAdded: '0.13'
   VersionChanged: '0.14'
   EnforcedStyle: call
@@ -3850,7 +3630,6 @@ Style/LineEndConcatenation:
     Use \ instead of + or << to concatenate two string literals at
     line end.
   Enabled: true
-  Severity: error
   SafeAutoCorrect: false
   VersionAdded: '0.18'
   VersionChanged: '0.64'
@@ -3877,7 +3656,6 @@ Style/MethodCallWithoutArgsParentheses:
   Description: 'Do not use parentheses for method calls with no arguments.'
   StyleGuide: '#method-invocation-parens'
   Enabled: true
-  Severity: error
   IgnoredMethods: []
   VersionAdded: '0.47'
   VersionChanged: '0.55'
@@ -3894,7 +3672,6 @@ Style/MethodDefParentheses:
     parentheses.
   StyleGuide: '#method-parens'
   Enabled: true
-  Severity: error
   VersionAdded: '0.16'
   VersionChanged: '1.7'
   EnforcedStyle: require_parentheses
@@ -3908,7 +3685,6 @@ Style/MinMax:
     Use `Enumerable#minmax` instead of `Enumerable#min`
     and `Enumerable#max` in conjunction.
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
 
 Style/MissingElse:
@@ -3936,14 +3712,12 @@ Style/MissingRespondToMissing:
     without implementing `respond_to_missing`.
   StyleGuide: '#no-method-missing'
   Enabled: true
-  Severity: error
   VersionAdded: '0.56'
 
 Style/MixinGrouping:
   Description: 'Checks for grouping of mixins in `class` and `module` bodies.'
   StyleGuide: '#mixin-grouping'
   Enabled: true
-  Severity: error
   VersionAdded: '0.48'
   VersionChanged: '0.49'
   EnforcedStyle: separated
@@ -3956,14 +3730,12 @@ Style/MixinGrouping:
 Style/MixinUsage:
   Description: 'Checks that `include`, `extend` and `prepend` exists at the top level.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.51'
 
 Style/ModuleFunction:
   Description: 'Checks for usage of `extend self` in modules.'
   StyleGuide: '#module-function'
   Enabled: true
-  Severity: error
   VersionAdded: '0.11'
   VersionChanged: '0.65'
   EnforcedStyle: module_function
@@ -3978,28 +3750,24 @@ Style/MultilineBlockChain:
   Description: 'Avoid multi-line chains of blocks.'
   StyleGuide: '#single-line-blocks'
   Enabled: false
-  Severity: error
   VersionAdded: '0.13'
 
 Style/MultilineIfModifier:
   Description: 'Only use if/unless modifiers on single line statements.'
   StyleGuide: '#no-multiline-if-modifiers'
   Enabled: true
-  Severity: error
   VersionAdded: '0.45'
 
 Style/MultilineIfThen:
   Description: 'Do not use then for multi-line if/unless.'
   StyleGuide: '#no-then'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.26'
 
 Style/MultilineMemoization:
   Description: 'Wrap multiline memoizations in a `begin` and `end` block.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.44'
   VersionChanged: '0.48'
   EnforcedStyle: keyword
@@ -4019,7 +3787,6 @@ Style/MultilineTernaryOperator:
     use if/unless instead.
   StyleGuide: '#no-multiline-ternary'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.86'
 
@@ -4027,7 +3794,6 @@ Style/MultilineWhenThen:
   Description: 'Do not use then for multi-line when statement.'
   StyleGuide: '#no-then'
   Enabled: true
-  Severity: error
   VersionAdded: '0.73'
 
 Style/MultipleComparison:
@@ -4035,14 +3801,12 @@ Style/MultipleComparison:
     Avoid comparing a variable with multiple items in a conditional,
     use Array#include? instead.
   Enabled: true
-  Severity: error
   VersionAdded: '0.49'
   VersionChanged: '1.1'
 
 Style/MutableConstant:
   Description: 'Do not assign mutable objects to constants.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.34'
   VersionChanged: '1.8'
   SafeAutoCorrect: false
@@ -4063,7 +3827,6 @@ Style/NegatedIf:
     (or control flow or).
   StyleGuide: '#unless-for-negatives'
   Enabled: true
-  Severity: error
   VersionAdded: '0.20'
   VersionChanged: '0.48'
   EnforcedStyle: postfix
@@ -4086,7 +3849,6 @@ Style/NegatedUnless:
   Description: 'Favor if over unless for negative conditions.'
   StyleGuide: '#if-for-negatives'
   Enabled: true
-  Severity: error
   VersionAdded: '0.69'
   EnforcedStyle: both
   SupportedStyles:
@@ -4101,14 +3863,12 @@ Style/NegatedWhile:
   Description: 'Favor until over while for negative conditions.'
   StyleGuide: '#until-for-negatives'
   Enabled: true
-  Severity: error
   VersionAdded: '0.20'
 
 Style/NestedModifier:
   Description: 'Avoid using nested modifiers.'
   StyleGuide: '#no-nested-modifiers'
   Enabled: true
-  Severity: error
   VersionAdded: '0.35'
 
 Style/NestedParenthesizedCalls:
@@ -4116,7 +3876,6 @@ Style/NestedParenthesizedCalls:
     Parenthesize method calls which are nested inside the
     argument list of another parenthesized method call.
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
   VersionChanged: '0.77'
   AllowedMethods:
@@ -4142,7 +3901,6 @@ Style/NestedTernaryOperator:
   Description: 'Use one expression per branch in a ternary operator.'
   StyleGuide: '#no-nested-ternary'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.86'
 
@@ -4150,7 +3908,6 @@ Style/Next:
   Description: 'Use `next` to skip iteration instead of a condition at the end.'
   StyleGuide: '#no-nested-conditionals'
   Enabled: true
-  Severity: error
   VersionAdded: '0.22'
   VersionChanged: '0.35'
   # With `always` all conditions at the end of an iteration needs to be
@@ -4168,7 +3925,6 @@ Style/NilComparison:
   Description: 'Prefer x.nil? to x == nil.'
   StyleGuide: '#predicate-methods'
   Enabled: true
-  Severity: error
   VersionAdded: '0.12'
   VersionChanged: '0.59'
   EnforcedStyle: predicate
@@ -4185,7 +3941,6 @@ Style/NonNilCheck:
   Description: 'Checks for redundant nil checks.'
   StyleGuide: '#no-non-nil-checks'
   Enabled: true
-  Severity: error
   VersionAdded: '0.20'
   VersionChanged: '0.22'
   # With `IncludeSemanticChanges` set to `true`, this cop reports offenses for
@@ -4200,7 +3955,6 @@ Style/Not:
   Description: 'Use ! instead of not.'
   StyleGuide: '#bang-not-not'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.20'
 
@@ -4208,7 +3962,6 @@ Style/NumericLiteralPrefix:
   Description: 'Use smallcase prefixes for numeric literals.'
   StyleGuide: '#numeric-literal-prefixes'
   Enabled: true
-  Severity: error
   VersionAdded: '0.41'
   EnforcedOctalStyle: zero_with_o
   SupportedOctalStyles:
@@ -4237,9 +3990,7 @@ Style/NumericPredicate:
   # object. Switching these methods has to be done with knowledge of the types
   # of the variables which rubocop doesn't have.
   SafeAutoCorrect: false
-  AutoCorrect: false
   Enabled: true
-  Severity: error
   EnforcedStyle: comparison
   VersionAdded: '0.42'
   VersionChanged: '0.59'
@@ -4258,7 +4009,6 @@ Style/OneLineConditional:
     single-line if/then/else/end constructs.
   StyleGuide: '#ternary-operator'
   Enabled: true
-  Severity: error
   AlwaysCorrectToMultiline: false
   VersionAdded: '0.9'
   VersionChanged: '0.90'
@@ -4282,7 +4032,6 @@ Style/OptionalArguments:
     of the argument list.
   StyleGuide: '#optional-arguments'
   Enabled: true
-  Severity: error
   Safe: false
   VersionAdded: '0.33'
   VersionChanged: '0.83'
@@ -4300,7 +4049,6 @@ Style/OrAssignment:
   Description: 'Recommend usage of double pipe equals (||=) where applicable.'
   StyleGuide: '#double-pipe-for-uninit'
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
 
 Style/ParallelAssignment:
@@ -4310,7 +4058,6 @@ Style/ParallelAssignment:
     matches on both sides of the assignment.
   StyleGuide: '#parallel-assignment'
   Enabled: true
-  Severity: error
   VersionAdded: '0.32'
 
 Style/ParenthesesAroundCondition:
@@ -4319,7 +4066,6 @@ Style/ParenthesesAroundCondition:
     if/unless/while.
   StyleGuide: '#no-parens-around-condition'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.56'
   AllowSafeAssignment: true
@@ -4329,7 +4075,6 @@ Style/PercentLiteralDelimiters:
   Description: 'Use `%`-literal delimiters consistently.'
   StyleGuide: '#percent-literal-braces'
   Enabled: true
-  Severity: error
   VersionAdded: '0.19'
   # Specify the default preferred delimiter for all types with the 'default' key
   # Override individual delimiters (even with default specified) by specifying
@@ -4346,7 +4091,6 @@ Style/PercentLiteralDelimiters:
 Style/PercentQLiterals:
   Description: 'Checks if uses of %Q/%q match the configured preference.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.25'
   EnforcedStyle: lower_case_q
   SupportedStyles:
@@ -4357,14 +4101,12 @@ Style/PerlBackrefs:
   Description: 'Avoid Perl-style regex back references.'
   StyleGuide: '#no-perl-regexp-last-matchers'
   Enabled: true
-  Severity: error
   VersionAdded: '0.13'
 
 Style/PreferredHashMethods:
   Description: 'Checks use of `has_key?` and `has_value?` Hash methods.'
   StyleGuide: '#hash-key'
   Enabled: true
-  Severity: error
   Safe: false
   VersionAdded: '0.41'
   VersionChanged: '0.70'
@@ -4377,7 +4119,6 @@ Style/Proc:
   Description: 'Use proc instead of Proc.new.'
   StyleGuide: '#proc'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.18'
 
@@ -4385,7 +4126,6 @@ Style/RaiseArgs:
   Description: 'Checks the arguments passed to raise/fail.'
   StyleGuide: '#exception-class-messages'
   Enabled: true
-  Severity: error
   VersionAdded: '0.14'
   VersionChanged: '1.2'
   EnforcedStyle: exploded
@@ -4400,7 +4140,6 @@ Style/RandomWithOffset:
     integers with offsets.
   StyleGuide: '#random-numbers'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
 
 Style/RedundantArgument:
@@ -4428,33 +4167,28 @@ Style/RedundantBegin:
   Description: "Don't use begin blocks when they are not needed."
   StyleGuide: '#begin-implicit'
   Enabled: true
-  Severity: error
   VersionAdded: '0.10'
   VersionChanged: '0.21'
 
 Style/RedundantCapitalW:
   Description: 'Checks for %W when interpolation is not needed.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.76'
 
 Style/RedundantCondition:
   Description: 'Checks for unnecessary conditional expressions.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.76'
 
 Style/RedundantConditional:
   Description: "Don't return true/false from a conditional."
   Enabled: true
-  Severity: error
   VersionAdded: '0.50'
 
 Style/RedundantException:
   Description: "Checks for an obsolete RuntimeException argument in raise/fail."
   StyleGuide: '#no-explicit-runtimeerror'
   Enabled: true
-  Severity: error
   VersionAdded: '0.14'
   VersionChanged: '0.29'
 
@@ -4482,27 +4216,23 @@ Style/RedundantFileExtensionInRequire:
 Style/RedundantFreeze:
   Description: "Checks usages of Object#freeze on immutable objects."
   Enabled: true
-  Severity: error
   VersionAdded: '0.34'
   VersionChanged: '0.66'
 
 Style/RedundantInterpolation:
   Description: 'Checks for strings that are just an interpolated expression.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.76'
 
 Style/RedundantParentheses:
   Description: "Checks for parentheses that seem not to serve any purpose."
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
 
 Style/RedundantPercentQ:
   Description: 'Checks for %q/%Q when single quotes or double quotes would do.'
   StyleGuide: '#percent-q'
   Enabled: true
-  Severity: error
   VersionAdded: '0.76'
 
 Style/RedundantRegexpCharacterClass:
@@ -4519,7 +4249,6 @@ Style/RedundantReturn:
   Description: "Don't use return where it's not required."
   StyleGuide: '#no-explicit-return'
   Enabled: true
-  Severity: error
   VersionAdded: '0.10'
   VersionChanged: '0.14'
   # When `true` allows code like `return x, y`.
@@ -4529,7 +4258,6 @@ Style/RedundantSelf:
   Description: "Don't use self where it's not needed."
   StyleGuide: '#no-self-unless-required'
   Enabled: true
-  Severity: error
   VersionAdded: '0.10'
   VersionChanged: '0.13'
 
@@ -4544,20 +4272,17 @@ Style/RedundantSort:
     Use `min` instead of `sort.first`,
     `max_by` instead of `sort_by...last`, etc.
   Enabled: true
-  Severity: error
   VersionAdded: '0.76'
 
 Style/RedundantSortBy:
   Description: 'Use `sort` instead of `sort_by { |x| x }`.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
 
 Style/RegexpLiteral:
   Description: 'Use / or %r around regular expressions.'
   StyleGuide: '#percent-r'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.30'
   EnforcedStyle: slashes
@@ -4576,14 +4301,12 @@ Style/RescueModifier:
   Description: 'Avoid using rescue in its modifier form.'
   StyleGuide: '#no-rescue-modifiers'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.34'
 
 Style/RescueStandardError:
   Description: 'Avoid rescuing without specifying an error class.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
   EnforcedStyle: explicit
   # implicit: Do not include the error class, `rescue`
@@ -4609,7 +4332,6 @@ Style/SafeNavigation:
     Auto-correction is unsafe as it assumes the object will
     be `nil` or truthy, but never `false`.
   Enabled: true
-  Severity: error
   VersionAdded: '0.43'
   VersionChanged: '0.77'
   # Safe navigation may cause a statement to start returning `nil` in addition
@@ -4629,7 +4351,6 @@ Style/Sample:
     `shuffle.last`, and `shuffle[Integer]`.
   Reference: 'https://github.com/JuanitoFatas/fast-ruby#arrayshufflefirst-vs-arraysample-code'
   Enabled: true
-  Severity: error
   VersionAdded: '0.30'
 
 Style/SelfAssignment:
@@ -4638,7 +4359,6 @@ Style/SelfAssignment:
     been used.
   StyleGuide: '#self-assignment'
   Enabled: true
-  Severity: error
   VersionAdded: '0.19'
   VersionChanged: '0.29'
 
@@ -4646,7 +4366,6 @@ Style/Semicolon:
   Description: "Don't use semicolons to terminate expressions."
   StyleGuide: '#no-semicolon'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.19'
   # Allow `;` to separate several expressions on the same line.
@@ -4662,7 +4381,6 @@ Style/SignalException:
   Description: 'Checks for proper usage of fail and raise.'
   StyleGuide: '#prefer-raise-over-fail'
   Enabled: true
-  Severity: error
   VersionAdded: '0.11'
   VersionChanged: '0.37'
   EnforcedStyle: only_raise
@@ -4694,7 +4412,6 @@ Style/SingleLineMethods:
   Description: 'Avoid single-line methods.'
   StyleGuide: '#no-single-line-methods'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '1.8'
   AllowIfMethodIsEmpty: true
@@ -4718,7 +4435,6 @@ Style/SpecialGlobalVars:
   Description: 'Avoid Perl-style global variables.'
   StyleGuide: '#no-cryptic-perlisms'
   Enabled: true
-  Severity: error
   VersionAdded: '0.13'
   VersionChanged: '0.36'
   SafeAutoCorrect: false
@@ -4731,7 +4447,6 @@ Style/StabbyLambdaParentheses:
   Description: 'Check for the usage of parentheses around stabby lambda arguments.'
   StyleGuide: '#stabby-lambda-with-args'
   Enabled: true
-  Severity: error
   VersionAdded: '0.35'
   EnforcedStyle: require_parentheses
   SupportedStyles:
@@ -4749,7 +4464,6 @@ Style/StderrPuts:
   Description: 'Use `warn` instead of `$stderr.puts`.'
   StyleGuide: '#warn'
   Enabled: true
-  Severity: error
   VersionAdded: '0.51'
 
 Style/StringConcatenation:
@@ -4772,7 +4486,6 @@ Style/StringLiterals:
   Description: 'Checks if uses of quotes match the configured preference.'
   StyleGuide: '#consistent-string-literals'
   Enabled: true
-  Severity: error
   EnforcedStyle: double_quotes
   VersionAdded: '0.9'
   VersionChanged: '0.36'
@@ -4788,7 +4501,6 @@ Style/StringLiteralsInInterpolation:
     Checks if uses of quotes inside expressions in interpolated
     strings match the configured preference.
   Enabled: true
-  Severity: error
   EnforcedStyle: double_quotes
   VersionAdded: '0.27'
   SupportedStyles:
@@ -4812,14 +4524,12 @@ Style/StringMethods:
 Style/Strip:
   Description: 'Use `strip` instead of `lstrip.rstrip`.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.36'
 
 Style/StructInheritance:
   Description: 'Checks for inheritance from Struct.new.'
   StyleGuide: '#no-extend-struct-new'
   Enabled: true
-  Severity: error
   VersionAdded: '0.29'
   VersionChanged: '0.86'
 
@@ -4833,7 +4543,6 @@ Style/SwapValues:
 Style/SymbolArray:
   Description: 'Use brackets array for symbols.'
   Enabled: true
-  Severity: error
   EnforcedStyle: brackets
   MinSize: 1
   VersionAdded: '0.9'
@@ -4845,13 +4554,11 @@ Style/SymbolArray:
 Style/SymbolLiteral:
   Description: 'Use plain symbols instead of string symbols when possible.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.30'
 
 Style/SymbolProc:
   Description: 'Use symbols as procs instead of blocks when possible.'
   Enabled: true
-  Severity: error
   Safe: false
   VersionAdded: '0.26'
   VersionChanged: '1.5'
@@ -4864,7 +4571,6 @@ Style/SymbolProc:
 Style/TernaryParentheses:
   Description: 'Checks for use of parentheses around ternary conditions.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.42'
   VersionChanged: '0.46'
   EnforcedStyle: require_no_parentheses
@@ -4877,19 +4583,16 @@ Style/TernaryParentheses:
 Style/TrailingBodyOnClass:
   Description: 'Class body goes below class statement.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
 
 Style/TrailingBodyOnMethodDefinition:
   Description: 'Method body goes below definition.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
 
 Style/TrailingBodyOnModule:
   Description: 'Module body goes below module statement.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
 
 Style/TrailingCommaInArguments:
@@ -4945,7 +4648,6 @@ Style/TrailingCommaInHashLiteral:
 Style/TrailingMethodEndStatement:
   Description: 'Checks for trailing end statement on line of method body.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.52'
 
 Style/TrailingUnderscoreVariable:
@@ -4954,7 +4656,6 @@ Style/TrailingUnderscoreVariable:
     end of parallel variable assignment.
   AllowNamedUnderscoreVariables: true
   Enabled: true
-  Severity: error
   VersionAdded: '0.31'
   VersionChanged: '0.35'
 
@@ -4964,7 +4665,6 @@ Style/TrivialAccessors:
   Description: 'Prefer attr_* methods to trivial readers/writers.'
   StyleGuide: '#attr_family'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.77'
   # When set to `false` the cop will suggest the use of accessor methods
@@ -5012,7 +4712,6 @@ Style/UnlessElse:
     case first.
   StyleGuide: '#no-else-with-unless'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
 
 Style/UnpackFirst:
@@ -5020,7 +4719,6 @@ Style/UnpackFirst:
     Checks for accessing the first element of `String#unpack`
     instead of using `unpack1`.
   Enabled: true
-  Severity: error
   VersionAdded: '0.54'
 
 Style/VariableInterpolation:
@@ -5029,7 +4727,6 @@ Style/VariableInterpolation:
     directly in strings.
   StyleGuide: '#curlies-interpolate'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.20'
 
@@ -5037,14 +4734,12 @@ Style/WhenThen:
   Description: 'Use when x then ... for one-line cases.'
   StyleGuide: '#one-line-cases'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
 
 Style/WhileUntilDo:
   Description: 'Checks for redundant do after while or until.'
   StyleGuide: '#no-multiline-while-do'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
 
 Style/WhileUntilModifier:
@@ -5053,14 +4748,12 @@ Style/WhileUntilModifier:
     single-line body.
   StyleGuide: '#while-as-a-modifier'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.30'
 
 Style/WordArray:
   Description: 'Use brackets array for strings.'
   Enabled: true
-  Severity: error
   EnforcedStyle: brackets
   VersionAdded: '0.9'
   VersionChanged: '0.36'
@@ -5080,7 +4773,6 @@ Style/YodaCondition:
   Description: 'Forbid or enforce yoda conditions.'
   Reference: 'https://en.wikipedia.org/wiki/Yoda_conditions'
   Enabled: true
-  Severity: error
   EnforcedStyle: forbid_for_all_comparison_operators
   SupportedStyles:
     # check all comparison operators
@@ -5098,7 +4790,6 @@ Style/YodaCondition:
 Style/ZeroLengthPredicate:
   Description: 'Use #empty? when testing for objects of length 0.'
   Enabled: true
-  Severity: error
   Safe: false
   VersionAdded: '0.37'
   VersionChanged: '0.39'
