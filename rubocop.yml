@@ -767,7 +767,7 @@ Layout/FirstMethodParameterLineBreak:
   Enabled: false
   VersionAdded: '0.49'
 
-Layout/FirstParameterIndentation:
+Layout/FirstArgumentIndentation:
   Description: >-
     Checks the indentation of the first parameter in a
     method definition.
