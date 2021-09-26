@@ -178,6 +178,20 @@ Bundler/GemComment:
   IgnoredGems: []
   OnlyFor: []
 
+Bundler/GemFilename:
+  Description: 'Enforces the filename for managing gems.'
+  Enabled: true
+  VersionAdded: '1.20'
+  EnforcedStyle: 'Gemfile'
+  SupportedStyles:
+    - 'Gemfile'
+    - 'gems.rb'
+  Include:
+    - '**/Gemfile'
+    - '**/gems.rb'
+    - '**/Gemfile.lock'
+    - '**/gems.locked'
+
 Bundler/GemVersion:
   Description: 'Requires or forbids specifying gem versions.'
   Enabled: false
@@ -199,6 +213,7 @@ Bundler/InsecureProtocolSource:
     'https://rubygems.org' if possible, or 'http://rubygems.org' if not.
   Enabled: true
   VersionAdded: '0.50'
+  AllowHttpProtocol: true
   Include:
     - '**/*.gemfile'
     - '**/Gemfile'
@@ -455,7 +470,6 @@ Layout/ConditionPosition:
 Layout/DefEndAlignment:
   Description: 'Align ends corresponding to defs correctly.'
   Enabled: true
-  Severity: error
   VersionAdded: '0.53'
   # The value `def` means that `end` should be aligned with the def keyword.
   # The value `start_of_line` means that `end` should be aligned with method
@@ -465,6 +479,7 @@ Layout/DefEndAlignment:
   SupportedStylesAlignWith:
     - start_of_line
     - def
+  Severity: error
 
 Layout/DotPosition:
   Description: 'Checks the position of the dot in multi-line method calls.'
@@ -971,7 +986,7 @@ Layout/LineEndStringConcatenationIndentation:
     Checks the indentation of the next line after a line that
     ends with a string literal and a backslash.
   Enabled: pending
-  VersionAdded: '<<next>>'
+  VersionAdded: '1.18'
   EnforcedStyle: aligned
   SupportedStyles:
     - aligned
@@ -1520,6 +1535,20 @@ Lint/AmbiguousOperator:
   VersionAdded: '0.17'
   VersionChanged: '0.83'
 
+Lint/AmbiguousOperatorPrecedence:
+  Description: >-
+    Checks for expressions containing multiple binary operations with
+    ambiguous precedence.
+  Enabled: pending
+  VersionAdded: '1.21'
+
+Lint/AmbiguousRange:
+  Description: Checks for ranges with ambiguous boundaries.
+  Enabled: pending
+  VersionAdded: '1.19'
+  SafeAutoCorrect: false
+  RequireParenthesesForMethodChains: false
+
 Lint/AmbiguousRegexpLiteral:
   Description: >-
     Checks for ambiguous regexp literals in the first argument of
@@ -1555,8 +1584,9 @@ Lint/BooleanSymbol:
   Enabled: true
   Severity: error
   Safe: false
+  SafeAutoCorrect: false
   VersionAdded: '0.50'
-  VersionChanged: '0.83'
+  VersionChanged: '<<next>>'
 
 Lint/CircularArgumentReference:
   Description: "Default values in optional keyword arguments and optional ordinal arguments should not refer back to the name of the argument."
@@ -1604,6 +1634,11 @@ Lint/Debugger:
     Capybara:
       - save_and_open_page
       - save_and_open_screenshot
+    debug.rb:
+      - binding.b
+      - binding.break
+      - Kernel.binding.b
+      - Kernel.binding.break
     Pry:
       - binding.pry
       - binding.remote_pry
@@ -1612,6 +1647,8 @@ Lint/Debugger:
     Rails:
       - debugger
       - Kernel.debugger
+    RubyJard:
+      - jard
     WebConsole:
       - binding.console
 
@@ -1853,6 +1890,11 @@ Lint/ImplicitStringConcatenation:
   Severity: error
   VersionAdded: '0.36'
 
+Lint/IncompatibleIoSelectWithFiberScheduler:
+  Description: 'Checks for `IO.select` that is incompatible with Fiber Scheduler.'
+  Enabled: pending
+  VersionAdded: '1.21'
+
 Lint/IneffectiveAccessModifier:
   Description: >-
     Checks for attempts to use `private` or `protected` to set
@@ -1926,7 +1968,7 @@ Lint/MissingCopEnableDirective:
 Lint/MissingSuper:
   Description: >-
     This cop checks for the presence of constructors and lifecycle callbacks
-    without calls to `super`'.
+    without calls to `super`.
   Enabled: false
   VersionAdded: '0.89'
   VersionChanged: '1.4'
@@ -2143,6 +2185,11 @@ Lint/RequireParentheses:
   Enabled: true
   Severity: error
   VersionAdded: '0.18'
+
+Lint/RequireRelativeSelfPath:
+  Description: 'Checks for uses a file requiring itself with `require_relative`.'
+  Enabled: pending
+  VersionAdded: '<<next>>'
 
 Lint/RescueException:
   Description: 'Avoid rescuing the Exception class.'
@@ -2505,13 +2552,13 @@ Metrics/ClassLength:
 # Avoid complex methods.
 Metrics/CyclomaticComplexity:
   Description: >-
-  Enabled: false
-  Max: 6
     A complexity metric that is strongly correlated to the number
     of test cases needed to validate a method.
+  Enabled: false
   VersionAdded: '0.25'
   VersionChanged: '0.81'
   IgnoredMethods: []
+  Max: 6
 
 Metrics/MethodLength:
   Description: 'Avoid methods longer than 80 lines of code.'
@@ -2720,8 +2767,9 @@ Naming/HeredocDelimiterNaming:
 
 Naming/InclusiveLanguage:
   Description: 'Recommend the use of inclusive language instead of problematic terms.'
-  Enabled: pending
-  VersionAdded: '<<next>>'
+  Enabled: false
+  VersionAdded: '1.18'
+  VersionChanged: '1.21'
   CheckIdentifiers: true
   CheckConstants: true
   CheckVariables: true
@@ -2746,6 +2794,7 @@ Naming/InclusiveLanguage:
         - 'Master of None'
         - 'Master Boot Record'
     slave:
+      WholeWord: true
       Suggestions: ['replica', 'secondary', 'follower']
 
 Naming/MemoizedInstanceVariableName:
@@ -2841,9 +2890,9 @@ Naming/RescuedExceptionsVariableName:
   Description: 'Use consistent rescued exceptions variables naming.'
   Enabled: true
   Severity: error
-  PreferredName: err
   VersionAdded: '0.67'
   VersionChanged: '0.68'
+  PreferredName: err
 
 Naming/VariableName:
   Description: 'Use the configured style when naming variables.'
@@ -2859,9 +2908,9 @@ Naming/VariableName:
   AllowedIdentifiers: []
 
 Naming/VariableNumber:
-  Enabled: false
   Description: 'Use the configured style when numbering symbols, methods and variables.'
   StyleGuide: '#snake-case-symbols-methods-vars-with-numbers'
+  Enabled: false
   VersionAdded: '0.50'
   VersionChanged: '1.4'
   EnforcedStyle: normalcase
@@ -2970,8 +3019,9 @@ Style/AndOr:
   StyleGuide: '#no-and-or-or'
   Enabled: true
   Severity: error
+  SafeAutoCorrect: false
   VersionAdded: '0.9'
-  VersionChanged: '0.25'
+  VersionChanged: '1.21'
   # Whether `and` and `or` are banned only in conditionals (conditionals)
   # or completely (always).
   EnforcedStyle: always
@@ -3009,8 +3059,9 @@ Style/AsciiComments:
   Enabled: true
   Severity: error
   VersionAdded: '0.9'
-  VersionChanged: '0.52'
-  AllowedChars: []
+  VersionChanged: '1.21'
+  AllowedChars:
+    - []
 
 Style/Attr:
   Description: 'Checks for uses of Module#attr.'
@@ -3054,7 +3105,6 @@ Style/BlockComments:
   Description: 'Do not use block comments.'
   StyleGuide: '#no-block-comments'
   Enabled: true
-  Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.23'
 
@@ -3175,7 +3225,7 @@ Style/CaseEquality:
   Enabled: false
   VersionAdded: '0.9'
   VersionChanged: '0.89'
-  # If AllowOnConstant is enabled, the cop will ignore violations when the receiver of
+  # If `AllowOnConstant` option is enabled, the cop will ignore violations when the receiver of
   # the case equality operator is a constant.
   #
   #   # bad
@@ -3359,7 +3409,7 @@ Style/CommentAnnotation:
   Enabled: true
   Severity: error
   VersionAdded: '0.10'
-  VersionChanged: '1.3'
+  VersionChanged: '1.20'
   Keywords:
     - TODO
     - FIXME
@@ -3367,13 +3417,15 @@ Style/CommentAnnotation:
     - HACK
     - REVIEW
     - NOTE
+  RequireColon: false
 
 Style/CommentedKeyword:
   Description: 'Do not place comments on the same line as certain keywords.'
   Enabled: true
   Severity: error
+  SafeAutoCorrect: false
   VersionAdded: '0.51'
-  VersionChanged: '1.7'
+  VersionChanged: '1.19'
 
 Style/ConditionalAssignment:
   Description: >-
@@ -3846,8 +3898,9 @@ Style/IdenticalConditionalBranches:
     out of the conditional.
   Enabled: true
   Severity: error
+  SafeAutoCorrect: false
   VersionAdded: '0.36'
-  VersionChanged: '1.16'
+  VersionChanged: '1.19'
 
 Style/IfInsideElse:
   Description: 'Finds if nodes inside else, which can be converted to elsif.'
@@ -3907,7 +3960,7 @@ Style/InPatternThen:
 Style/InfiniteLoop:
   Description: >-
     Use Kernel#loop for infinite loops.
-    This cop is unsafe in the body may raise a `StopIteration` exception.
+    This cop is unsafe if the body may raise a `StopIteration` exception.
   Safe: false
   StyleGuide: '#infinite-loop'
   Enabled: true
@@ -4195,6 +4248,7 @@ Style/MultipleComparison:
   Severity: error
   VersionAdded: '0.49'
   VersionChanged: '1.1'
+  AllowMethodComparison: true
 
 Style/MutableConstant:
   Description: 'Do not assign mutable objects to constants.'
@@ -4398,9 +4452,9 @@ Style/NumericPredicate:
   AutoCorrect: false
   Enabled: true
   Severity: error
-  EnforcedStyle: comparison
   VersionAdded: '0.42'
   VersionChanged: '0.59'
+  EnforcedStyle: comparison
   SupportedStyles:
     - predicate
     - comparison
@@ -4433,6 +4487,7 @@ Style/OptionHash:
     - args
     - params
     - parameters
+  Allowlist: []
 
 Style/OptionalArguments:
   Description: >-
@@ -4707,6 +4762,11 @@ Style/RedundantSelfAssignment:
   Safe: false
   VersionAdded: '0.90'
 
+Style/RedundantSelfAssignmentBranch:
+  Description: 'Checks for places where conditional branch makes redundant self-assignment.'
+  Enabled: pending
+  VersionAdded: '1.19'
+
 Style/RedundantSort:
   Description: >-
     Use `min` instead of `sort.first`,
@@ -4890,6 +4950,7 @@ Style/SpecialGlobalVars:
   VersionAdded: '0.13'
   VersionChanged: '0.36'
   SafeAutoCorrect: false
+  RequireEnglish: true
   EnforcedStyle: use_english_names
   SupportedStyles:
     - use_perl_names
@@ -4933,7 +4994,7 @@ Style/StringConcatenation:
   Enabled: true
   Safe: false
   VersionAdded: '0.89'
-  VersionChanged: '1.6'
+  VersionChanged: '1.18'
 
 Style/StringHashKeys:
   Description: 'Prefer symbols instead of strings as hash keys.'
@@ -4995,8 +5056,9 @@ Style/StructInheritance:
   StyleGuide: '#no-extend-struct-new'
   Enabled: true
   Severity: error
+  SafeAutoCorrect: false
   VersionAdded: '0.29'
-  VersionChanged: '0.86'
+  VersionChanged: '1.20'
 
 Style/SwapValues:
   Description: 'This cop enforces the use of shorthand-style swapping of 2 variables.'
@@ -5009,10 +5071,10 @@ Style/SymbolArray:
   Description: 'Use brackets array for symbols.'
   Enabled: true
   Severity: error
-  EnforcedStyle: brackets
-  MinSize: 1
   VersionAdded: '0.9'
   VersionChanged: '0.49'
+  EnforcedStyle: brackets
+  MinSize: 1
   SupportedStyles:
     - percent
     - brackets
@@ -5116,7 +5178,7 @@ Style/TrailingCommaInHashLiteral:
   # If `comma`, the cop requires a comma after the last item in a hash,
   # but only when each item is on its own line.
   # If `consistent_comma`, the cop requires a comma after the last item of all
-  # non-empty hash literals.
+  # non-empty, multiline hash literals.
   EnforcedStyleForMultiline: comma
   SupportedStylesForMultiline:
     - comma
@@ -5252,10 +5314,10 @@ Style/WhileUntilModifier:
 Style/WordArray:
   Description: 'Use brackets array for strings.'
   Enabled: true
+  VersionAdded: '0.9'
+  VersionChanged: '1.19'
   Severity: error
   EnforcedStyle: brackets
-  VersionAdded: '0.9'
-  VersionChanged: '0.36'
   SupportedStyles:
     # percent style: %w(word1 word2)
     - percent
