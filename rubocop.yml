@@ -2186,11 +2186,6 @@ Lint/RequireParentheses:
   Severity: error
   VersionAdded: '0.18'
 
-Lint/RequireRelativeSelfPath:
-  Description: 'Checks for uses a file requiring itself with `require_relative`.'
-  Enabled: pending
-  VersionAdded: '<<next>>'
-
 Lint/RescueException:
   Description: 'Avoid rescuing the Exception class.'
   StyleGuide: '#no-blind-rescues'
