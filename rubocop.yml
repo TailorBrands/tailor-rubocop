@@ -1586,7 +1586,6 @@ Lint/BooleanSymbol:
   Description: 'Check for `:true` and `:false` symbols.'
   Enabled: true
   Severity: error
-  Safe: false
   SafeAutoCorrect: false
   VersionAdded: '0.50'
   VersionChanged: '1.22'
@@ -1623,7 +1622,6 @@ Lint/Debugger:
   Severity: error
   VersionAdded: '0.14'
   VersionChanged: '1.10'
-  DebuggerReceivers: [] # deprecated
   DebuggerMethods:
     # Groups are available so that a specific group can be disabled in
     # a user's configuration, but are otherwise not significant.
@@ -1989,7 +1987,6 @@ Lint/MultipleComparison:
   Severity: error
   VersionAdded: '0.47'
   VersionChanged: '1.1'
-  AllowMethodComparison: true
 
 Lint/NestedMethodDefinition:
   Description: 'Do not use nested method definitions.'
@@ -2523,7 +2520,6 @@ Metrics/BlockLength:
   CountComments: false  # count full line comments?
   Max: 80
   CountAsOne: []
-  ExcludedMethods: [] # deprecated, retained for backwards compatibility
   IgnoredMethods:
     # By default, exclude the `#refine` method, as it tends to have larger
     # associated blocks.
@@ -2578,7 +2574,6 @@ Metrics/MethodLength:
   CountComments: false  # count full line comments?
   Max: 80
   CountAsOne: []
-  ExcludedMethods: [] # deprecated, retained for backwards compatibility
   IgnoredMethods: []
   Exclude:
     # Migrations are one time thing
