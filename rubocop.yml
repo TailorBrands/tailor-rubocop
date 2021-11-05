@@ -268,7 +268,7 @@ Gemspec/RequiredRubyVersion:
   Enabled: true
   Severity: error
   VersionAdded: '0.52'
-  VersionChanged: '0.89'
+  VersionChanged: '1.22'
   Include:
     - '**/*.gemspec'
 
@@ -985,7 +985,8 @@ Layout/LineEndStringConcatenationIndentation:
   Description: >-
     Checks the indentation of the next line after a line that
     ends with a string literal and a backslash.
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.18'
   EnforcedStyle: aligned
   SupportedStyles:
@@ -1542,7 +1543,8 @@ Lint/AmbiguousOperatorPrecedence:
   Description: >-
     Checks for expressions containing multiple binary operations with
     ambiguous precedence.
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.21'
 
 Lint/AmbiguousRange:
@@ -1661,8 +1663,10 @@ Lint/DeprecatedClassMethods:
 
 Lint/DeprecatedConstants:
   Description: 'Checks for deprecated constants.'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.8'
+  VersionChanged: '1.22'
   # You can configure deprecated constants.
   # If there is an alternative method, you can set alternative value as `Alternative`.
   # And you can set the deprecated version as `DeprecatedVersion`.
@@ -1683,6 +1687,9 @@ Lint/DeprecatedConstants:
     'FALSE':
       Alternative: 'false'
       DeprecatedVersion: '2.4'
+    'Net::HTTPServerException':
+      Alternative: 'Net::HTTPClientException'
+      DeprecatedVersion: '2.6'
     'Random::DEFAULT':
       Alternative: 'Random.new'
       DeprecatedVersion: '3.0'
@@ -1735,7 +1742,8 @@ Lint/DuplicateMethods:
 
 Lint/DuplicateRegexpCharacterClassElement:
   Description: 'Checks for duplicate elements in Regexp character classes.'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.1'
 
 Lint/DuplicateRequire:
@@ -1772,7 +1780,8 @@ Lint/EmptyBlock:
 
 Lint/EmptyClass:
   Description: 'Checks for classes and metaclasses without a body.'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.3'
   AllowComments: false
 
@@ -1799,12 +1808,14 @@ Lint/EmptyExpression:
 Lint/EmptyFile:
   Description: 'Enforces that Ruby source files are not empty.'
   Enabled: true
+  Severity: error
   AllowComments: true
   VersionAdded: '0.90'
 
 Lint/EmptyInPattern:
   Description: 'Checks for the presence of `in` pattern branches without a body.'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   AllowComments: true
   VersionAdded: '1.16'
 
@@ -2011,7 +2022,8 @@ Lint/NextWithoutAccumulator:
 
 Lint/NoReturnInBeginEndBlocks:
   Description: 'Do not `return` inside `begin..end` blocks in assignment contexts.'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.2'
 
 Lint/NonDeterministicRequireOrder:
@@ -2955,7 +2967,7 @@ Security/JSONLoad:
   Enabled: true
   Severity: error
   VersionAdded: '0.43'
-  VersionChanged: '0.44'
+  VersionChanged: '1.22'
   # Autocorrect here will change to a method that may cause crashes depending
   # on the value of the argument.
   AutoCorrect: false
@@ -4502,6 +4514,16 @@ Style/OneLineConditional:
   AlwaysCorrectToMultiline: false
   VersionAdded: '0.9'
   VersionChanged: '0.90'
+
+Style/OpenStructUse:
+  Description: >-
+    Avoid using OpenStruct. As of Ruby 3.0, use is officially discouraged due to performance,
+    version compatibility, and potential security issues.
+  Reference:
+    - https://docs.ruby-lang.org/en/3.0.0/OpenStruct.html#class-OpenStruct-label-Caveats
+
+  Enabled: pending
+  VersionAdded: '<<next>>'
 
 Style/OptionHash:
   Description: "Don't use option hashes when you can use keyword arguments."
