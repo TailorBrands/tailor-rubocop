@@ -2630,7 +2630,7 @@ Metrics/ParameterLists:
   VersionChanged: '1.5'
   Max: 15
   CountKeywordArgs: true
-  MaxOptionalParameters: 3
+  MaxOptionalParameters: 5
 
 Metrics/PerceivedComplexity:
   Description: >-
