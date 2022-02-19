@@ -155,6 +155,7 @@ AllCops:
     rubocop-minitest: [minitest]
     rubocop-sequel: [sequel]
     rubocop-rake: [rake]
+    rubocop-graphql: [graphql]
 
 #################### Bundler ###############################
 
@@ -1939,6 +1940,7 @@ Lint/InheritException:
   Enabled: true
   Severity: error
   VersionAdded: '0.41'
+  VersionChanged: '<<next>>'
   # The default base class in favour of `Exception`.
   EnforcedStyle: runtime_error
   SupportedStyles:
@@ -2030,7 +2032,7 @@ Lint/NestedPercentLiteral:
   VersionAdded: '0.52'
 
 Lint/NextWithoutAccumulator:
-  Description:  >-
+  Description: >-
     Do not omit the accumulator when calling `next`
     in a `reduce`/`inject` block.
   Enabled: true
@@ -2377,7 +2379,8 @@ Lint/TrailingCommaInAttributeDeclaration:
 
 Lint/TripleQuotes:
   Description: 'Checks for useless triple quote constructs.'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.9'
 
 Lint/UnderscorePrefixedVariableName:
@@ -2389,7 +2392,8 @@ Lint/UnderscorePrefixedVariableName:
 
 Lint/UnexpectedBlockArity:
   Description: 'Looks for blocks that have fewer arguments that the calling method expects.'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   Safe: false
   VersionAdded: '1.5'
   Methods:
@@ -2686,6 +2690,7 @@ Naming/BlockForwarding:
   SupportedStyles:
     - anonymous
     - explicit
+  BlockForwardingName: block
 
 Naming/BlockParameterName:
   Description: >-
@@ -3377,7 +3382,7 @@ Style/ClassMethodsDefinitions:
   StyleGuide: '#def-self-class-methods'
   Enabled: false
   VersionAdded: '0.89'
-  EnforcedStyle:  def_self
+  EnforcedStyle: def_self
   SupportedStyles:
     - def_self
     - self_class
@@ -3615,7 +3620,7 @@ Style/DoubleCopDisableDirective:
 Style/DoubleNegation:
   Description: 'Checks for uses of double negation (!!).'
   StyleGuide: '#no-bang-bang'
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.19'
   VersionChanged: '1.2'
   EnforcedStyle: allowed_in_returns
@@ -3710,7 +3715,8 @@ Style/EndBlock:
 Style/EndlessMethod:
   Description: 'Avoid the use of multi-lined endless method definitions.'
   StyleGuide: '#endless-methods'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.8'
   EnforcedStyle: allow_single_line
   SupportedStyles:
@@ -3955,6 +3961,8 @@ Style/HashSyntax:
     - always
     # forces use of explicit hash literal value.
     - never
+    # accepts both shorthand and explicit use of hash literal value.
+    - either
   # Force hashes that have a symbol value to use hash rockets
   UseHashRocketsWithSymbolValues: false
   # Do not suggest { a?: 1 } over { :a? => 1 } in ruby19 style
@@ -3998,7 +4006,7 @@ Style/IfUnlessModifier:
     Favor modifier if/unless usage when you have a
     single-line body.
   StyleGuide: '#if-as-a-modifier'
-  Enabled: false
+  Enabled: true
   Severity: error
   VersionAdded: '0.9'
   VersionChanged: '0.30'
@@ -4077,8 +4085,8 @@ Style/InverseMethods:
     :>: :<=
     # `ActiveSupport` defines some common inverse methods. They are listed below,
     # and not enabled by default.
-    #:present?: :blank?,
-    #:include?: :exclude?
+    # :present?: :blank?,
+    # :include?: :exclude?
   # `InverseBlocks` are methods that are inverted by inverting the return
   # of the block that is passed to the method
   InverseBlocks:
@@ -4745,7 +4753,8 @@ Style/RandomWithOffset:
 
 Style/RedundantArgument:
   Description: 'Check for a redundant argument passed to certain methods.'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   Safe: false
   VersionAdded: '1.4'
   VersionChanged: '1.7'
