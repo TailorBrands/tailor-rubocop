@@ -1940,7 +1940,6 @@ Lint/InheritException:
   Enabled: true
   Severity: error
   VersionAdded: '0.41'
-  VersionChanged: '<<next>>'
   # The default base class in favour of `Exception`.
   EnforcedStyle: runtime_error
   SupportedStyles:
