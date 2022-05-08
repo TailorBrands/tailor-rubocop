@@ -143,7 +143,7 @@ AllCops:
   # or gems.locked file. (Although the Ruby version is specified in the Gemfile
   # or gems.rb file, RuboCop reads the final value from the lock file.) If the
   # Ruby version is still unresolved, RuboCop will use the oldest officially
-  # supported Ruby version (currently Ruby 2.5).
+  # supported Ruby version (currently Ruby 2.6).
   TargetRubyVersion: ~
   # Determines if a notification for extension libraries should be shown when
   # rubocop is run. Keys are the name of the extension, and values are an array
@@ -245,6 +245,18 @@ Gemspec/DateAssignment:
   VersionAdded: '1.10'
   Include:
     - '**/*.gemspec'
+
+Gemspec/DependencyVersion:
+  Description: 'Requires or forbids specifying gem dependency versions.'
+  Enabled: false
+  VersionAdded: '1.29'
+  EnforcedStyle: 'required'
+  SupportedStyles:
+    - 'required'
+    - 'forbidden'
+  Include:
+    - '**/*.gemspec'
+  AllowedGems: []
 
 Gemspec/DuplicatedAssignment:
   Description: 'An attribute assignment method calls should be listed only once in a gemspec.'
@@ -971,7 +983,8 @@ Layout/IndentationWidth:
   VersionAdded: '0.49'
   # Number of spaces for each indentation level.
   Width: 2
-  IgnoredPatterns: []
+  AllowedPatterns: []
+  IgnoredPatterns: [] # deprecated
 
 Layout/InitialIndentation:
   Description: >-
@@ -1765,7 +1778,9 @@ Lint/DuplicateRegexpCharacterClassElement:
 Lint/DuplicateRequire:
   Description: 'Check for duplicate `require`s and `require_relative`s.'
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.90'
+  VersionChanged: '1.28'
 
 Lint/DuplicateRescueException:
   Description: 'Checks that there are no repeated exceptions used in `rescue` expressions.'
@@ -1939,12 +1954,14 @@ Lint/InheritException:
   Description: 'Avoid inheriting from the `Exception` class.'
   Enabled: true
   Severity: error
+  SafeAutoCorrect: false
   VersionAdded: '0.41'
+  VersionChanged: '1.26'
   # The default base class in favour of `Exception`.
   EnforcedStyle: runtime_error
   SupportedStyles:
-    - runtime_error
     - standard_error
+    - runtime_error
 
 Lint/InterpolationCheck:
   Description: 'Raise warning for interpolation in single q strs.'
@@ -2155,6 +2172,8 @@ Lint/RedundantDirGlobSort:
   Description: 'Checks for redundant `sort` method to `Dir.glob` and `Dir[]`.'
   Enabled: pending
   VersionAdded: '1.8'
+  VersionChanged: '1.26'
+  SafeAutoCorrect: false
 
 Lint/RedundantRequireStatement:
   Description: 'Checks for unnecessary `require` statement.'
@@ -2202,6 +2221,12 @@ Lint/RedundantWithObject:
   Enabled: true
   Severity: error
   VersionAdded: '0.51'
+
+Lint/RefinementImportMethods:
+  Description: 'Use `Refinement#import_methods` when using `include` or `prepend` in `refine` block.'
+  Enabled: pending
+  SafeAutoCorrect: false
+  VersionAdded: '1.27'
 
 Lint/RegexpAsCondition:
   Description: >-
@@ -2430,10 +2455,11 @@ Lint/UnreachableLoop:
   Enabled: true
   VersionAdded: '0.89'
   VersionChanged: '1.7'
-  IgnoredPatterns:
+  AllowedPatterns:
     # RSpec uses `times` in its message expectations
     # eg. `exactly(2).times`
     - !ruby/regexp /(exactly|at_least|at_most)\(\d+\)\.times/
+  IgnoredPatterns: [] # deprecated
 
 Lint/UnusedBlockArgument:
   Description: 'Checks for unused block arguments.'
@@ -2490,16 +2516,11 @@ Lint/UselessAssignment:
   Severity: error
   VersionAdded: '0.11'
 
-Lint/UselessElseWithoutRescue:
-  Description: 'Checks for useless `else` in `begin..end` without `rescue`.'
-  Enabled: true
-  Severity: error
-  VersionAdded: '0.17'
-
 Lint/UselessMethodDefinition:
   Description: 'Checks for useless method definitions.'
   Enabled: true
   VersionAdded: '0.90'
+  VersionChanged: '0.91'
   Safe: false
   AllowComments: true
 
@@ -2611,6 +2632,7 @@ Metrics/MethodLength:
   CountComments: false  # count full line comments?
   Max: 80
   CountAsOne: []
+  ExcludedMethods: [] # deprecated, retained for backwards compatibility
   IgnoredMethods: []
   Exclude:
     # Migrations are one time thing
@@ -2882,11 +2904,12 @@ Naming/MethodName:
     - camelCase
   # Method names matching patterns are always allowed.
   #
-  #   IgnoredPatterns:
+  #   AllowedPatterns:
   #     - '\A\s*onSelectionBulkChange\s*'
   #     - '\A\s*onSelectionCleared\s*'
   #
-  IgnoredPatterns: []
+  AllowedPatterns: []
+  IgnoredPatterns: [] # deprecated
 
 Naming/MethodParameterName:
   Description: >-
@@ -2965,6 +2988,7 @@ Naming/VariableName:
     - snake_case
     - camelCase
   AllowedIdentifiers: []
+  AllowedPatterns: []
 
 Naming/VariableNumber:
   Description: 'Use the configured style when numbering symbols, methods and variables.'
@@ -2986,8 +3010,14 @@ Naming/VariableNumber:
     - rfc822       # Time#rfc822
     - rfc2822      # Time#rfc2822
     - rfc3339      # DateTime.rfc3339
+  AllowedPatterns: []
 
 #################### Security ##############################
+
+Security/CompoundHash:
+  Description: 'When overwriting Object#hash to combine values, prefer delegating to Array#hash over writing a custom implementation.'
+  Enabled: pending
+  VersionAdded: '1.28'
 
 Security/Eval:
   Description: 'The use of eval represents a serious security risk.'
@@ -3723,6 +3753,12 @@ Style/EndlessMethod:
     - allow_always
     - disallow
 
+Style/EnvHome:
+  Description: "Checks for consistent usage of `ENV['HOME']`."
+  Enabled: pending
+  Safe: false
+  VersionAdded: '1.29'
+
 Style/EvalWithLocation:
   Description: 'Pass `__FILE__` and `__LINE__` to `eval` method, as they are used by backtraces.'
   Enabled: true
@@ -3763,6 +3799,16 @@ Style/ExponentialNotation:
     - engineering
     - integral
 
+Style/FetchEnvVar:
+  Description: >-
+    This cop suggests `ENV.fetch` for the replacement of `ENV[]`.
+  Reference:
+    - https://rubystyle.guide/#hash-fetch-defaults
+  Enabled: pending
+  VersionAdded: '1.28'
+  # Environment variables to be excluded from the inspection.
+  AllowedVars: []
+
 Style/FileRead:
   Description: 'Favor `File.(bin)read` convenience methods.'
   StyleGuide: '#file-read'
@@ -3796,8 +3842,9 @@ Style/For:
   StyleGuide: '#no-for-loops'
   Enabled: true
   Severity: error
+  SafeAutoCorrect: false
   VersionAdded: '0.13'
-  VersionChanged: '0.59'
+  VersionChanged: '1.26'
   EnforcedStyle: each
   SupportedStyles:
     - each
@@ -3882,10 +3929,11 @@ Style/GuardClause:
   Enabled: true
   Severity: error
   VersionAdded: '0.20'
-  VersionChanged: '0.22'
+  VersionChanged: '1.28'
   # `MinBodyLength` defines the number of lines of the a body of an `if` or `unless`
   # needs to have to trigger this cop
   MinBodyLength: 1
+  AllowConsecutiveConditionals: false
 
 Style/HashAsLastArrayItem:
   Description: >-
@@ -4163,7 +4211,8 @@ Style/MethodCallWithArgsParentheses:
   VersionChanged: '1.7'
   IgnoreMacros: true
   IgnoredMethods: []
-  IgnoredPatterns: []
+  AllowedPatterns: []
+  IgnoredPatterns: [] # deprecated
   IncludedMacros: []
   AllowParenthesesInMultilineCall: false
   AllowParenthesesInChaining: false
@@ -4413,6 +4462,11 @@ Style/NegatedWhile:
   Severity: error
   VersionAdded: '0.20'
 
+Style/NestedFileDirname:
+  Description: 'Checks for nested `File.dirname`.'
+  Enabled: pending
+  VersionAdded: '1.26'
+
 Style/NestedModifier:
   Description: 'Avoid using nested modifiers.'
   StyleGuide: '#no-nested-modifiers'
@@ -4577,6 +4631,19 @@ Style/NumericPredicate:
   # false positives.
   Exclude:
     - 'spec/**/*'
+
+Style/ObjectThen:
+  Description: 'Enforces the use of consistent method names `Object#yield_self` or `Object#then`.'
+  StyleGuide: '#object-yield-self-vs-object-then'
+  Enabled: pending
+  VersionAdded: '1.28'
+  # Use `Object#yield_self` or `Object#then`?
+  # Prefer `Object#yield_self` to `Object#then` (yield_self)
+  # Prefer `Object#then` to `Object#yield_self` (then)
+  EnforcedStyle: 'then'
+  SupportedStyles:
+    - then
+    - yield_self
 
 Style/OneLineConditional:
   Description: >-
@@ -4834,6 +4901,14 @@ Style/RedundantFreeze:
   VersionAdded: '0.34'
   VersionChanged: '0.66'
 
+Style/RedundantInitialize:
+  Description: 'Checks for redundant `initialize` methods.'
+  Enabled: pending
+  Safe: false
+  AllowComments: true
+  VersionAdded: '1.27'
+  VersionChanged: '1.28'
+
 Style/RedundantInterpolation:
   Description: 'Checks for strings that are just an interpolated expression.'
   Enabled: true
@@ -4967,7 +5042,7 @@ Style/SafeNavigation:
   Enabled: true
   Severity: error
   VersionAdded: '0.43'
-  VersionChanged: '0.77'
+  VersionChanged: '1.27'
   # Safe navigation may cause a statement to start returning `nil` in addition
   # to whatever it used to return.
   ConvertCodeThatCanStartToReturnNil: false
@@ -4978,6 +5053,8 @@ Style/SafeNavigation:
     - try
     - try!
   SafeAutoCorrect: false
+  # Maximum length of method chains for register an offense.
+  MaxChainLength: 2
 
 Style/Sample:
   Description: >-
@@ -5089,6 +5166,7 @@ Style/SpecialGlobalVars:
   SupportedStyles:
     - use_perl_names
     - use_english_names
+    - use_builtin_english_names
 
 Style/StabbyLambdaParentheses:
   Description: 'Check for the usage of parentheses around stabby lambda arguments.'
@@ -5226,13 +5304,14 @@ Style/SymbolProc:
   Severity: error
   Safe: false
   VersionAdded: '0.26'
-  VersionChanged: '1.5'
+  VersionChanged: '1.28'
   AllowMethodsWithArguments: false
   # A list of method names to be ignored by the check.
   # The names should be fairly unique, otherwise you'll end up ignoring lots of code.
   IgnoredMethods:
     - respond_to
     - define_method
+  AllowComments: false
 
 Style/TernaryParentheses:
   Description: 'Checks for use of parentheses around ternary conditions.'
