@@ -239,10 +239,10 @@ Bundler/OrderedGems:
 
 #################### Gemspec ###############################
 
-Gemspec/DateAssignment:
-  Description: 'Checks that `date =` is not used in gemspec file, it is set automatically when the gem is packaged.'
+Gemspec/DeprecatedAttributeAssignment:
+  Description: Checks that deprecated attribute assignments are not set in a gemspec file.
   Enabled: pending
-  VersionAdded: '1.10'
+  VersionAdded: '1.30'
   Include:
     - '**/*.gemspec'
 
