@@ -30,6 +30,7 @@ AllCops:
     - '**/*.rbx'
     - '**/*.ru'
     - '**/*.ruby'
+    - '**/*.schema'
     - '**/*.spec'
     - '**/*.thor'
     - '**/*.watchr'
@@ -55,6 +56,7 @@ AllCops:
     - '**/Puppetfile'
     - '**/Rakefile'
     - '**/rakefile'
+    - '**/Schemafile'
     - '**/Snapfile'
     - '**/Steepfile'
     - '**/Thorfile'
@@ -143,7 +145,7 @@ AllCops:
   # or gems.locked file. (Although the Ruby version is specified in the Gemfile
   # or gems.rb file, RuboCop reads the final value from the lock file.) If the
   # Ruby version is still unresolved, RuboCop will use the oldest officially
-  # supported Ruby version (currently Ruby 2.6).
+  # supported Ruby version (currently Ruby 2.7).
   TargetRubyVersion: ~
   # Determines if a notification for extension libraries should be shown when
   # rubocop is run. Keys are the name of the extension, and values are an array
@@ -156,6 +158,8 @@ AllCops:
     rubocop-sequel: [sequel]
     rubocop-rake: [rake]
     rubocop-graphql: [graphql]
+    rubocop-capybara: [capybara]
+    rubocop-factory_bot: [factory_bot, factory_bot_rails]
   # Enable/Disable checking the methods extended by Active Support.
   ActiveSupportExtensionsEnabled: false
 
@@ -167,6 +171,16 @@ Bundler/DuplicatedGem:
   Severity: error
   VersionAdded: '0.46'
   VersionChanged: '1.40'
+  Include:
+    - '**/*.gemfile'
+    - '**/Gemfile'
+    - '**/gems.rb'
+
+Bundler/DuplicatedGroup:
+  Description: 'Checks for duplicate group entries in Gemfile.'
+  Enabled: true
+  Severity: error
+  VersionAdded: '1.56'
   Include:
     - '**/*.gemfile'
     - '**/Gemfile'
@@ -267,7 +281,8 @@ Gemspec/DeprecatedAttributeAssignment:
 
 Gemspec/DevelopmentDependencies:
   Description: Checks that development dependencies are specified in Gemfile rather than gemspec.
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.44'
   EnforcedStyle: Gemfile
   SupportedStyles:
@@ -474,7 +489,9 @@ Layout/ClassStructure:
   Description: 'Enforces a configured order of definitions within a class body.'
   StyleGuide: '#consistent-classes'
   Enabled: false
+  SafeAutoCorrect: false
   VersionAdded: '0.52'
+  VersionChanged: '1.53'
   Categories:
     module_inclusion:
       - include
@@ -591,6 +608,8 @@ Layout/EmptyLineBetweenDefs:
   EmptyLineBetweenMethodDefs: true
   EmptyLineBetweenClassDefs: true
   EmptyLineBetweenModuleDefs: true
+  # `DefLikeMacros` takes the name of any macro that you want to treat like a def.
+  DefLikeMacros: []
   # `AllowAdjacentOneLineDefs` means that single line method definitions don't
   # need an empty line between them. `true` by default.
   AllowAdjacentOneLineDefs: false
@@ -1723,7 +1742,7 @@ Lint/Debugger:
   Enabled: true
   Severity: error
   VersionAdded: '0.14'
-  VersionChanged: '<<next>>'
+  VersionChanged: '1.46'
   DebuggerMethods:
     # Groups are available so that a specific group can be disabled in
     # a user's configuration, but are otherwise not significant.
@@ -1751,6 +1770,7 @@ Lint/Debugger:
       - Kernel.binding.remote_pry
       - Kernel.binding.pry_remote
       - Pry.rescue
+      - pry
     Rails:
       - debugger
       - Kernel.debugger
@@ -1848,6 +1868,11 @@ Lint/DuplicateMagicComment:
   Description: 'Check for duplicated magic comments.'
   Enabled: pending
   VersionAdded: '1.37'
+
+Lint/DuplicateMatchPattern:
+  Description: 'Do not repeat patterns in `in` keywords.'
+  Enabled: pending
+  VersionAdded: '1.50'
 
 Lint/DuplicateMethods:
   Description: 'Check for duplicate method definitions.'
@@ -2107,8 +2132,15 @@ Lint/MissingSuper:
     Checks for the presence of constructors and lifecycle callbacks
     without calls to `super`.
   Enabled: false
+  AllowedParentClasses: []
   VersionAdded: '0.89'
   VersionChanged: '1.4'
+
+Lint/MixedCaseRange:
+  Description: 'Checks for mixed-case character ranges since they include likely unintended characters.'
+  Enabled: pending
+  SafeAutoCorrect: false
+  VersionAdded: '1.53'
 
 Lint/MixedRegexpCaptureTypes:
   Description: 'Do not mix named captures and numbered captures in a Regexp literal.'
@@ -2275,11 +2307,18 @@ Lint/RedundantDirGlobSort:
   VersionChanged: '1.26'
   SafeAutoCorrect: false
 
+Lint/RedundantRegexpQuantifiers:
+  Description: 'Checks for redundant quantifiers in Regexps.'
+  Enabled: pending
+  VersionAdded: '1.53'
+
 Lint/RedundantRequireStatement:
   Description: 'Checks for unnecessary `require` statement.'
   Enabled: true
   Severity: error
+  SafeAutoCorrect: false
   VersionAdded: '0.76'
+  VersionChanged: '1.57'
 
 Lint/RedundantSafeNavigation:
   Description: 'Checks for redundant safe navigation calls.'
@@ -2501,6 +2540,9 @@ Lint/TopLevelReturnWithArgument:
   Description: 'Detects top level return statements with argument.'
   Enabled: true
   VersionAdded: '0.89'
+  # These codes are `eval`-ed in method and their return values may be used.
+  Exclude:
+    - '**/*.jb'
 
 Lint/TrailingCommaInAttributeDeclaration:
   Description: 'Checks for trailing commas in attribute declarations.'
@@ -2620,6 +2662,8 @@ Lint/UselessAssignment:
   Enabled: true
   Severity: error
   VersionAdded: '0.11'
+  VersionChanged: '1.51'
+  SafeAutoCorrect: false
 
 Lint/UselessElseWithoutRescue:
   Description: 'Checks for useless `else` in `begin..end` without `rescue`.'
@@ -2650,10 +2694,9 @@ Lint/UselessSetterCall:
   Description: 'Checks for useless setter call to a local variable.'
   Enabled: true
   Severity: error
-  SafeAutoCorrect: false
+  Safe: false
   VersionAdded: '0.13'
   VersionChanged: '1.2'
-  Safe: false
 
 Lint/UselessTimes:
   Description: 'Checks for useless `Integer#times` calls.'
@@ -2729,6 +2772,12 @@ Metrics/ClassLength:
     # Models can be rather long
     - 'app/models/**/*'
   CountAsOne: []
+
+Metrics/CollectionLiteralLength:
+  Description: 'Checks for `Array` or `Hash` literals with many entries.'
+  Enabled: pending
+  VersionAdded: '1.47'
+  LengthThreshold: 250
 
 # Avoid complex methods.
 Metrics/CyclomaticComplexity:
@@ -2971,7 +3020,7 @@ Naming/InclusiveLanguage:
   Description: 'Recommend the use of inclusive language instead of problematic terms.'
   Enabled: false
   VersionAdded: '1.18'
-  VersionChanged: '1.21'
+  VersionChanged: '1.49'
   CheckIdentifiers: true
   CheckConstants: true
   CheckVariables: true
@@ -3133,6 +3182,7 @@ Naming/VariableNumber:
     - rfc822       # Time#rfc822
     - rfc2822      # Time#rfc2822
     - rfc3339      # DateTime.rfc3339
+    - x86_64       # Allowed by default as an underscore separated CPU architecture name
   AllowedPatterns: []
 
 #################### Security ##############################
@@ -3140,7 +3190,9 @@ Naming/VariableNumber:
 Security/CompoundHash:
   Description: 'When overwriting Object#hash to combine values, prefer delegating to Array#hash over writing a custom implementation.'
   Enabled: pending
+  Safe: false
   VersionAdded: '1.28'
+  VersionChanged: '1.51'
 
 Security/Eval:
   Description: 'The use of eval represents a serious security risk.'
@@ -3255,6 +3307,7 @@ Style/ArgumentsForwarding:
   StyleGuide: '#arguments-forwarding'
   Enabled: pending
   AllowOnlyRestArgument: true
+  UseAnonymousForwarding: true
   VersionAdded: '1.1'
 
 Style/ArrayCoercion:
@@ -3478,6 +3531,9 @@ Style/CaseLikeIf:
   Enabled: true
   Safe: false
   VersionAdded: '0.88'
+  VersionChanged: '1.48'
+  # `MinBranchesCount` defines the number of branches `if` needs to have to trigger this cop.
+  MinBranchesCount: 3
 
 Style/CharacterLiteral:
   Description: 'Checks for uses of character literals.'
@@ -3491,11 +3547,10 @@ Style/ClassAndModuleChildren:
   StyleGuide: '#namespace-definition'
   # Moving from compact to nested children requires knowledge of whether the
   # outer parent is a module or a class. Moving from nested to compact requires
-  # verification that the outer parent is defined elsewhere. Rubocop does not
+  # verification that the outer parent is defined elsewhere. RuboCop does not
   # have the knowledge to perform either operation safely and thus requires
   # manual oversight.
   SafeAutoCorrect: false
-  AutoCorrect: false
   Enabled: false
   VersionAdded: '0.19'
   #
@@ -3532,7 +3587,9 @@ Style/ClassEqualityComparison:
   Description: 'Enforces the use of `Object#instance_of?` instead of class comparison for equality.'
   StyleGuide: '#instance-of-vs-class-comparison'
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.93'
+  VersionChanged: '1.57'
   AllowedMethods:
     - ==
     - equal?
@@ -3571,6 +3628,7 @@ Style/CollectionCompact:
   Safe: false
   VersionAdded: '1.2'
   VersionChanged: '1.3'
+  AllowedReceivers: []
 
 # Align with the style guide.
 Style/CollectionMethods:
@@ -3589,6 +3647,7 @@ Style/CollectionMethods:
   PreferredMethods:
     collect: 'map'
     collect!: 'map!'
+    collect_concat: 'flat_map'
     inject: 'reduce'
     detect: 'find'
     find_all: 'select'
@@ -3735,6 +3794,14 @@ Style/Copyright:
   Notice: '^Copyright (\(c\) )?2[0-9]{3} .+'
   AutocorrectNotice: ''
 
+Style/DataInheritance:
+  Description: 'Checks for inheritance from Data.define.'
+  StyleGuide: '#no-extend-data-define'
+  Enabled: pending
+  SafeAutoCorrect: false
+  VersionAdded: '1.49'
+  VersionChanged: '1.51'
+
 Style/DateTime:
   Description: 'Use Time over DateTime.'
   StyleGuide: '#date-time'
@@ -3758,6 +3825,12 @@ Style/Dir:
     absolute path to the current file.
   Enabled: true
   VersionAdded: '0.50'
+
+Style/DirEmpty:
+  Description: >-
+    Prefer to use `Dir.empty?('path/to/dir')` when checking if a directory is empty.
+  Enabled: pending
+  VersionAdded: '1.48'
 
 Style/DisableCopsWithinSourceCodeDirective:
   Description: >-
@@ -3933,6 +4006,11 @@ Style/EvenOdd:
   VersionAdded: '0.12'
   VersionChanged: '0.29'
 
+Style/ExactRegexpMatch:
+  Description: 'Checks for exact regexp match inside Regexp literals.'
+  Enabled: pending
+  VersionAdded: '1.51'
+
 Style/ExpandPathArguments:
   Description: "Use `expand_path(__dir__)` instead of `expand_path('..', __FILE__)`."
   Enabled: true
@@ -3968,6 +4046,13 @@ Style/FetchEnvVar:
   VersionAdded: '1.28'
   # Environment variables to be excluded from the inspection.
   AllowedVars: []
+
+Style/FileEmpty:
+  Description: >-
+    Prefer to use `File.empty?('path/to/file')` when checking if a file is empty.
+  Enabled: pending
+  Safe: false
+  VersionAdded: '1.48'
 
 Style/FileRead:
   Description: 'Favor `File.(bin)read` convenience methods.'
@@ -4112,8 +4197,9 @@ Style/HashConversion:
   Description: 'Avoid Hash[] in favor of ary.to_h or literal hashes.'
   StyleGuide: '#avoid-hash-constructor'
   Enabled: pending
+  SafeAutoCorrect: false
   VersionAdded: '1.10'
-  VersionChanged: '1.11'
+  VersionChanged: '1.55'
   AllowSplatArgument: true
 
 Style/HashEachMethods:
@@ -4296,10 +4382,6 @@ Style/InverseMethods:
     :=~: :!~
     :<: :>=
     :>: :<=
-    # `ActiveSupport` defines some common inverse methods. They are listed below,
-    # and not enabled by default.
-    # :present?: :blank?,
-    # :include?: :exclude?
   # `InverseBlocks` are methods that are inverted by inverting the return
   # of the block that is passed to the method
   InverseBlocks:
@@ -4309,7 +4391,9 @@ Style/InverseMethods:
 Style/InvertibleUnlessCondition:
   Description: 'Favor `if` with inverted condition over `unless`.'
   Enabled: false
+  Safe: false
   VersionAdded: '1.44'
+  VersionChanged: '1.50'
   # `InverseMethods` are methods that can be inverted in a `unless` condition.
   # The relationship of inverse methods needs to be defined in both directions.
   # Keys and values both need to be defined as symbols.
@@ -4326,14 +4410,6 @@ Style/InvertibleUnlessCondition:
     :none?: :any?
     :even?: :odd?
     :odd?: :even?
-    # `ActiveSupport` defines some common inverse methods. They are listed below,
-    # and not enabled by default.
-    # :present?: :blank?
-    # :blank?: :present?
-    # :include?: :exclude?
-    # :exclude?: :include?
-    # :one?: :many?
-    # :many?: :one?
 
 Style/IpAddresses:
   Description: "Don't include literal IP addresses in code."
@@ -4630,6 +4706,7 @@ Style/MultipleComparison:
   VersionAdded: '0.49'
   VersionChanged: '1.1'
   AllowMethodComparison: true
+  ComparisonsThreshold: 2
 
 Style/MutableConstant:
   Description: 'Do not assign mutable objects to constants.'
@@ -4848,12 +4925,10 @@ Style/NumericPredicate:
     Checks for the use of predicate- or comparison methods for
     numeric comparisons.
   StyleGuide: '#predicate-methods'
-  Safe: false
   # This will change to a new method call which isn't guaranteed to be on the
   # object. Switching these methods has to be done with knowledge of the types
   # of the variables which rubocop doesn't have.
-  SafeAutoCorrect: false
-  AutoCorrect: false
+  Safe: false
   Enabled: true
   Severity: error
   VersionAdded: '0.42'
@@ -4900,13 +4975,17 @@ Style/OpenStructUse:
   Reference:
     - https://docs.ruby-lang.org/en/3.0.0/OpenStruct.html#class-OpenStruct-label-Caveats
 
-  Enabled: pending
+  Enabled: true
+  Severity: error
+  Safe: false
   VersionAdded: '1.23'
+  VersionChanged: '1.51'
 
 Style/OperatorMethodCall:
   Description: 'Checks for redundant dot before operator method call.'
   StyleGuide: '#operator-method-call'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.37'
 
 Style/OptionHash:
@@ -5066,18 +5145,28 @@ Style/RedundantArgument:
   Severity: error
   Safe: false
   VersionAdded: '1.4'
-  VersionChanged: '1.40'
+  VersionChanged: '1.55'
   Methods:
     # Array#join
     join: ''
     # Array#sum
     sum: 0
+    # Kernel.#exit
+    exit: true
+    # Kernel.#exit!
+    exit!: false
     # String#split
     split: ' '
     # String#chomp
     chomp: "\n"
     # String#chomp!
     chomp!: "\n"
+
+Style/RedundantArrayConstructor:
+  Description: 'Checks for the instantiation of array using redundant `Array` constructor.'
+  Enabled: true
+  Severity: error
+  VersionAdded: '1.52'
 
 Style/RedundantAssignment:
   Description: 'Checks for redundant assignment before returning.'
@@ -5116,9 +5205,15 @@ Style/RedundantConstantBase:
   Severity: error
   VersionAdded: '1.40'
 
+Style/RedundantCurrentDirectoryInPath:
+  Description: 'Checks for uses a redundant current directory in path.'
+  Enabled: pending
+  VersionAdded: '1.53'
+
 Style/RedundantDoubleSplatHashBraces:
   Description: 'Checks for redundant uses of double splat hash braces.'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.41'
 
 Style/RedundantEach:
@@ -5157,6 +5252,16 @@ Style/RedundantFileExtensionInRequire:
   Enabled: true
   VersionAdded: '0.88'
 
+Style/RedundantFilterChain:
+  Description: >-
+    Identifies usages of `any?`, `empty?`, `none?` or `one?` predicate methods chained to
+    `select`/`filter`/`find_all` and change them to use predicate method instead.
+  Enabled: true
+  Severity: error
+  SafeAutoCorrect: false
+  VersionAdded: '1.52'
+  VersionChanged: '1.57'
+
 Style/RedundantFreeze:
   Description: "Checks usages of Object#freeze on immutable objects."
   Enabled: true
@@ -5186,6 +5291,11 @@ Style/RedundantInterpolation:
   VersionAdded: '0.76'
   VersionChanged: '1.30'
 
+Style/RedundantLineContinuation:
+  Description: 'Check for redundant line continuation.'
+  Enabled: pending
+  VersionAdded: '1.49'
+
 Style/RedundantParentheses:
   Description: "Checks for parentheses that seem not to serve any purpose."
   Enabled: true
@@ -5199,10 +5309,22 @@ Style/RedundantPercentQ:
   Severity: error
   VersionAdded: '0.76'
 
+Style/RedundantRegexpArgument:
+  Description: 'Identifies places where argument can be replaced from a deterministic regexp to a string.'
+  Enabled: true
+  Severity: error
+  VersionAdded: '1.53'
+
 Style/RedundantRegexpCharacterClass:
   Description: 'Checks for unnecessary single-element Regexp character classes.'
   Enabled: true
   VersionAdded: '0.85'
+
+Style/RedundantRegexpConstructor:
+  Description: 'Checks for the instantiation of regexp using redundant `Regexp.new` or `Regexp.compile`.'
+  Enabled: true
+  Severity: error
+  VersionAdded: '1.52'
 
 Style/RedundantRegexpEscape:
   Description: 'Checks for redundant escapes in Regexps.'
@@ -5257,7 +5379,8 @@ Style/RedundantSortBy:
 
 Style/RedundantStringEscape:
   Description: 'Checks for redundant escapes in string literals.'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.37'
 
 Style/RegexpLiteral:
@@ -5314,6 +5437,16 @@ Style/ReturnNil:
     - return_nil
   VersionAdded: '0.50'
 
+Style/ReturnNilInPredicateMethodDefinition:
+  Description: 'Checks if uses of `return` or `return nil` in predicate method definition.'
+  StyleGuide: '#bool-methods-qmark'
+  Enabled: true
+  Severity: error
+  SafeAutoCorrect: false
+  AllowedMethods: []
+  AllowedPatterns: []
+  VersionAdded: '1.53'
+
 Style/SafeNavigation:
   Description: >-
     Transforms usages of a method call safeguarded by
@@ -5349,7 +5482,8 @@ Style/Sample:
 
 Style/SelectByRegexp:
   Description: 'Prefer grep/grep_v to select/reject with a regexp match.'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   SafeAutoCorrect: false
   VersionAdded: '1.22'
 
@@ -5409,6 +5543,12 @@ Style/SingleLineBlockParams:
     - inject:
         - acc
         - elem
+
+Style/SingleLineDoEndBlock:
+  Description: 'Checks for single-line `do`...`end` blocks.'
+  Enabled: true
+  Severity: error
+  VersionAdded: '1.57'
 
 Style/SingleLineMethods:
   Description: 'Avoid single-line methods.'
@@ -5477,7 +5617,8 @@ Style/StderrPuts:
 Style/StringChars:
   Description: 'Checks for uses of `String#split` with empty string or regexp literal argument.'
   StyleGuide: '#string-chars'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   Safe: false
   VersionAdded: '1.12'
 
@@ -5557,7 +5698,8 @@ Style/StructInheritance:
 Style/SwapValues:
   Description: 'Enforces the use of shorthand-style swapping of 2 variables.'
   StyleGuide: '#values-swapping'
-  Enabled: pending
+  Enabled: true
+  Severity: error
   VersionAdded: '1.1'
   SafeAutoCorrect: false
 
@@ -5825,6 +5967,12 @@ Style/WordArray:
   MinSize: 1
   # The regular expression `WordRegex` decides what is considered a word.
   WordRegex: !ruby/regexp '/\A(?:\p{Word}|\p{Word}-\p{Word}|\n|\t)+\z/'
+
+Style/YAMLFileRead:
+  Description: 'Checks for the use of `YAML.load`, `YAML.safe_load`, and `YAML.parse` with `File.read` argument.'
+  Enabled: true
+  Severity: error
+  VersionAdded: '1.53'
 
 Style/YodaCondition:
   Description: 'Forbid or enforce yoda conditions.'
