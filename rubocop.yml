@@ -1074,7 +1074,6 @@ Layout/LineContinuationSpacing:
   Description: 'Checks the spacing in front of backslash in line continuations.'
   Enabled: pending
   AutoCorrect: true
-  SafeAutoCorrect: true
   VersionAdded: '1.31'
   EnforcedStyle: space
   SupportedStyles:
@@ -2677,7 +2676,6 @@ Lint/UselessMethodDefinition:
   VersionAdded: '0.90'
   VersionChanged: '0.91'
   Safe: false
-  AllowComments: true
 
 Lint/UselessRescue:
   Description: 'Checks for useless `rescue`s.'
@@ -3306,7 +3304,6 @@ Style/ArgumentsForwarding:
   Description: 'Use arguments forwarding.'
   StyleGuide: '#arguments-forwarding'
   Enabled: pending
-  AllowOnlyRestArgument: true
   UseAnonymousForwarding: true
   VersionAdded: '1.1'
 
