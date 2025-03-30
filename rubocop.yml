@@ -6126,3 +6126,10 @@ RSpec/MultipleExpectations:
   Enabled: false
   Severity: error
   VersionAdded: "0.9"
+
+RSpec/RepeatedExample:
+  Description: "Checks for repeated examples."
+  Enabled: false
+  Severity: error
+  VersionAdded: "0.9"
+  MaxRepeatCount: 1
