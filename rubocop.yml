@@ -6133,3 +6133,10 @@ RSpec/RepeatedExample:
   Severity: error
   VersionAdded: "0.9"
   MaxRepeatCount: 1
+
+RSpec/MultipleMemoizedHelpers:
+  Description: "Checks for multiple memoized helpers in a single example."
+  Enabled: false
+  Severity: error
+  VersionAdded: "0.9"
+  MaxMemoizedHelpers: 1
