@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-rspec
 
 AllCops:
@@ -1955,7 +1955,6 @@ Lint/EmptyConditionalBody:
   Description: "Checks for the presence of `if`, `elsif` and `unless` branches without a body."
   Enabled: true
   AutoCorrect: contextual
-  SafeAutoCorrect: false
   AllowComments: true
   VersionAdded: "0.89"
   VersionChanged: "1.61"
@@ -2352,7 +2351,6 @@ Lint/RedundantRequireStatement:
   Description: "Checks for unnecessary `require` statement."
   Enabled: true
   Severity: error
-  SafeAutoCorrect: false
   VersionAdded: "0.76"
   VersionChanged: "1.57"
 
@@ -6132,11 +6130,10 @@ RSpec/RepeatedExample:
   Enabled: false
   Severity: error
   VersionAdded: "0.9"
-  MaxRepeatCount: 1
 
 RSpec/MultipleMemoizedHelpers:
   Description: "Checks for multiple memoized helpers in a single example."
   Enabled: false
   Severity: error
   VersionAdded: "0.9"
-  MaxMemoizedHelpers: 1
+  Max: 1
