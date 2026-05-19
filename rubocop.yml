@@ -544,7 +544,6 @@ Layout/ClosingParenthesisIndentation:
   Severity: error
   VersionAdded: "0.49"
   VersionChanged: "1.86"
-  IndentationWidth: ~
 
 Layout/CommentIndentation:
   Description: "Indentation of comments."
@@ -555,7 +554,6 @@ Layout/CommentIndentation:
   AllowForAlignment: false
   VersionAdded: "0.49"
   VersionChanged: "1.86"
-  IndentationWidth: ~
 
 Layout/ConditionPosition:
   Description: >-
