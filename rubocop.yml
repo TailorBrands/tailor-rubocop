@@ -543,6 +543,8 @@ Layout/ClosingParenthesisIndentation:
   Enabled: true
   Severity: error
   VersionAdded: "0.49"
+  VersionChanged: "1.86"
+  IndentationWidth: ~
 
 Layout/CommentIndentation:
   Description: "Indentation of comments."
@@ -552,7 +554,8 @@ Layout/CommentIndentation:
   # with a comment on the preceding line.
   AllowForAlignment: false
   VersionAdded: "0.49"
-  VersionChanged: "1.24"
+  VersionChanged: "1.86"
+  IndentationWidth: ~
 
 Layout/ConditionPosition:
   Description: >-
@@ -1066,6 +1069,10 @@ Layout/IndentationWidth:
   VersionAdded: "0.49"
   # Number of spaces for each indentation level.
   Width: 2
+  EnforcedStyleAlignWith: start_of_line
+  SupportedStylesAlignWith:
+    - start_of_line
+    - relative_to_receiver
   AllowedPatterns: []
 
 Layout/InitialIndentation:
@@ -1135,16 +1142,21 @@ Layout/LineLength:
   StyleGuide: "#max-line-length"
   Enabled: true
   VersionAdded: "0.25"
-  VersionChanged: "1.4"
+  VersionChanged: "1.82"
   AutoCorrect: true
   Max: 200
   # To make it possible to copy or click on URIs in the code, we allow lines
   # containing a URI to be longer than Max.
   AllowHeredoc: true
   AllowURI: true
+  AllowQualifiedName: true
   URISchemes:
     - http
     - https
+  AllowRBSInlineAnnotation: false
+  # IgnoreCopDirectives was renamed to AllowCopDirectives in 1.82.
+  AllowCopDirectives: true
+  SplitStrings: false
   # The AllowedPatterns option is a list of !ruby/regexp and/or string
   # elements. Strings will be converted to Regexp objects. A line that matches
   # any regular expression listed in this option will be ignored by LineLength.
@@ -1836,6 +1848,12 @@ Lint/Debugger:
     debug.rb:
       - debug/open
       - debug/start
+
+Lint/DataDefineOverride:
+  Description: "Disallow overriding the Data built-in methods via Data.define."
+  Enabled: true
+  Severity: error
+  VersionAdded: "1.85"
 
 Lint/DeprecatedClassMethods:
   Description: "Check for deprecated class method calls."
@@ -2541,7 +2559,8 @@ Lint/SafeNavigationConsistency:
   Enabled: true
   Severity: error
   VersionAdded: "0.55"
-  VersionChanged: "0.77"
+  VersionChanged: "1.85"
+  SafeAutoCorrect: false
   AllowedMethods:
     - present?
     - blank?
@@ -2733,6 +2752,12 @@ Lint/UnreachableLoop:
     # eg. `exactly(2).times`
     - !ruby/regexp /(exactly|at_least|at_most)\(\d+\)\.times/
 
+Lint/UnreachablePatternBranch:
+  Description: "Checks for unreachable in pattern branches after an unconditional catch-all pattern."
+  Enabled: true
+  Severity: error
+  VersionAdded: "1.85"
+
 Lint/UnusedBlockArgument:
   Description: "Checks for unused block arguments."
   StyleGuide: "#underscore-unused-vars"
@@ -2841,7 +2866,10 @@ Lint/UselessOr:
   Description: "Checks for || after methods that always return truthy values."
   Enabled: true
   Severity: error
+  SafeAutoCorrect: false
+  AutoCorrect: contextual
   VersionAdded: "1.76"
+  VersionChanged: "1.82"
 
 Lint/UselessRuby2Keywords:
   Description: "Finds unnecessary uses of `ruby2_keywords`."
@@ -4151,6 +4179,18 @@ Style/EmptyCaseCondition:
   Severity: error
   VersionAdded: "0.40"
 
+Style/EmptyClassDefinition:
+  Description: "Enforces consistent style for empty class definitions."
+  Enabled: true
+  Severity: error
+  VersionAdded: "1.84"
+  VersionChanged: "1.86"
+  EnforcedStyle: class_keyword
+  SupportedStyles:
+    - class_keyword
+    - class_new
+  AllowedParentClasses: []
+
 Style/EmptyElse:
   Description: "Avoid empty else-clauses."
   Enabled: true
@@ -4314,6 +4354,13 @@ Style/FileNull:
   Enabled: true
   Severity: error
   VersionAdded: "1.69"
+
+Style/FileOpen:
+  Description: "Checks for File.open without a block, which can leak file descriptors."
+  Enabled: true
+  Severity: error
+  Safe: false
+  VersionAdded: "1.85"
 
 Style/FileRead:
   Description: "Favor `File.(bin)read` convenience methods."
@@ -4507,6 +4554,16 @@ Style/HashLikeCase:
   # `MinBranchesCount` defines the number of branches `case` needs to have
   # to trigger this cop
   MinBranchesCount: 3
+
+Style/HashLookupMethod:
+  Description: "Enforces the use of either Hash#[] or Hash#fetch for hash lookup."
+  Enabled: false
+  Safe: false
+  VersionAdded: "1.84"
+  EnforcedStyle: brackets
+  SupportedStyles:
+    - brackets
+    - fetch
 
 Style/HashSyntax:
   Description: >-
@@ -4806,6 +4863,13 @@ Style/MapIntoArray:
   VersionAdded: "1.63"
   Safe: false
 
+Style/MapJoin:
+  Description: "Checks for redundant map(&:to_s) before join."
+  Enabled: true
+  Severity: error
+  Safe: false
+  VersionAdded: "1.85"
+
 Style/MapToHash:
   Description: "Prefer `to_h` with a block over `map.to_h`."
   Enabled: true
@@ -4830,6 +4894,7 @@ Style/MethodCallWithArgsParentheses:
   AllowedMethods: []
   AllowedPatterns: []
   IncludedMacros: []
+  IncludedMacroPatterns: []
   AllowParenthesesInMultilineCall: false
   AllowParenthesesInChaining: false
   AllowParenthesesInCamelCaseMethod: false
@@ -4947,6 +5012,12 @@ Style/ModuleFunction:
     - forbidden
   Autocorrect: false
   SafeAutoCorrect: false
+
+Style/ModuleMemberExistenceCheck:
+  Description: "Checks for usage of Module methods returning arrays that can be replaced with equivalent predicates."
+  Enabled: true
+  Severity: error
+  VersionAdded: "1.82"
 
 Style/MultilineBlockChain:
   Description: "Avoid multi-line chains of blocks."
@@ -5087,6 +5158,12 @@ Style/NegatedWhile:
   Enabled: true
   Severity: error
   VersionAdded: "0.20"
+
+Style/NegativeArrayIndex:
+  Description: "Use negative array indices instead of calculating array length minus a value."
+  Enabled: true
+  Severity: error
+  VersionAdded: "1.84"
 
 Style/NestedFileDirname:
   Description: "Checks for nested `File.dirname`."
@@ -5276,6 +5353,16 @@ Style/ObjectThen:
     - then
     - yield_self
 
+Style/OneClassPerFile:
+  Description: "Checks that each source file defines at most one top-level class or module."
+  Enabled: false
+  VersionAdded: "1.85"
+  VersionChanged: "1.86"
+  AllowedClasses: []
+  Exclude:
+    - "spec/**/*"
+    - "test/**/*"
+
 Style/OneLineConditional:
   Description: >-
     Favor the ternary operator (?:) or multi-line constructs over
@@ -5371,6 +5458,15 @@ Style/ParenthesesAroundCondition:
   AllowSafeAssignment: true
   AllowInMultilineConditions: false
 
+Style/PartitionInsteadOfDoubleSelect:
+  Description: >-
+    Checks for consecutive select/filter/find_all and reject calls
+    on the same receiver with the same block body. Use partition instead.
+  Enabled: true
+  Severity: error
+  Safe: false
+  VersionAdded: "1.85"
+
 Style/PercentLiteralDelimiters:
   Description: "Use `%`-literal delimiters consistently."
   StyleGuide: "#percent-literal-braces"
@@ -5405,6 +5501,13 @@ Style/PerlBackrefs:
   Enabled: true
   Severity: error
   VersionAdded: "0.13"
+
+Style/PredicateWithKind:
+  Description: "Prefer any?(Klass) to any? { |x| x.is_a?(Klass) }."
+  Enabled: true
+  Severity: error
+  SafeAutoCorrect: false
+  VersionAdded: "1.85"
 
 Style/PreferredHashMethods:
   Description: "Checks use of `has_key?` and `has_value?` Hash methods."
@@ -5461,6 +5564,13 @@ Style/RandomWithOffset:
   Severity: error
   VersionAdded: "0.52"
 
+Style/ReduceToHash:
+  Description: "Use to_h { ... } instead of each_with_object, inject, or reduce to build a hash."
+  Enabled: true
+  Severity: error
+  Safe: false
+  VersionAdded: "1.85"
+
 Style/RedundantArgument:
   Description: "Check for a redundant argument passed to certain methods."
   Enabled: true
@@ -5477,6 +5587,8 @@ Style/RedundantArgument:
     exit: true
     # Kernel.#exit!
     exit!: false
+    # Integer#to_i
+    to_i: 10
     # String#split
     split: " "
     # String#chomp
@@ -5640,6 +5752,12 @@ Style/RedundantLineContinuation:
   Severity: error
   VersionAdded: "1.49"
 
+Style/RedundantMinMaxBy:
+  Description: "Identifies places where max_by/min_by can be replaced by max/min."
+  Enabled: true
+  Severity: error
+  VersionAdded: "1.85"
+
 Style/RedundantParentheses:
   Description: "Checks for parentheses that seem not to serve any purpose."
   Enabled: true
@@ -5727,6 +5845,13 @@ Style/RedundantStringEscape:
   Severity: error
   VersionAdded: "1.37"
 
+Style/RedundantStructKeywordInit:
+  Description: "Checks for redundant keyword_init option for Struct.new."
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: "1.85"
+  VersionChanged: "1.86"
+
 Style/RegexpLiteral:
   Description: "Use / or %r around regular expressions."
   StyleGuide: "#percent-r"
@@ -5791,6 +5916,13 @@ Style/ReturnNilInPredicateMethodDefinition:
   AllowedPatterns: []
   VersionAdded: "1.53"
 
+Style/ReverseFind:
+  Description: "Use `arr.rfind` instead of `arr.reverse.find`."
+  Enabled: true
+  Severity: error
+  Safe: false
+  VersionAdded: "1.84"
+
 Style/SafeNavigation:
   Description: >-
     Transforms usages of a method call safeguarded by
@@ -5830,6 +5962,20 @@ Style/Sample:
   Enabled: true
   Severity: error
   VersionAdded: "0.30"
+
+Style/SelectByKind:
+  Description: "Prefer grep/grep_v to select/reject/find/detect with a kind check."
+  Enabled: true
+  Severity: error
+  SafeAutoCorrect: false
+  VersionAdded: "1.85"
+
+Style/SelectByRange:
+  Description: "Prefer grep/grep_v to select/reject/find/detect with a range check."
+  Enabled: true
+  Severity: error
+  SafeAutoCorrect: false
+  VersionAdded: "1.85"
 
 Style/SelectByRegexp:
   Description: "Prefer grep/grep_v to select/reject with a regexp match."
@@ -6110,6 +6256,13 @@ Style/SymbolProc:
     - define_method
   AllowedPatterns: []
   AllowComments: false
+
+Style/TallyMethod:
+  Description: "Prefer Enumerable#tally over manual counting patterns."
+  Enabled: true
+  Severity: error
+  Safe: false
+  VersionAdded: "1.85"
 
 Style/TernaryParentheses:
   Description: "Checks for use of parentheses around ternary conditions."
@@ -6399,7 +6552,9 @@ RSpec/IncludeExamples:
   Description: "Prefer it_behaves_like over include_examples for proper context isolation."
   Enabled: true
   Severity: error
+  SafeAutoCorrect: false
   VersionAdded: "3.6"
+  VersionChanged: "3.7"
 
 RSpec/MultipleExpectations:
   Description: "It is recommended to have one expectation per example."
@@ -6425,3 +6580,11 @@ RSpec/LeakyLocalVariable:
   Enabled: true
   Severity: error
   VersionAdded: "3.8"
+
+RSpec/Output:
+  Description: "Checks for the use of output calls like puts and print in specs."
+  Enabled: true
+  Severity: error
+  AutoCorrect: contextual
+  SafeAutoCorrect: false
+  VersionAdded: "3.9"
